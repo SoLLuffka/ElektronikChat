@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="ElektronikChat.View.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ElektronikChat.View" xmlns:viewmodel="clr-namespace:ElektronikChat.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="Logowanie"
+                       Foreground="White"
+                       FontSize="30"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Margin="0,10,0,0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"  Width="400"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+            <!--elementy formularza-->
+            <DockPanel>
+                <TextBlock Text="Login: "
+                       Foreground="White"
+                       FontSize="20"/>
+                <TextBox
+                         FontSize="20"
+                         BorderThickness="0,0,0,2"
+                         BorderBrush="#1468c8"
+                         Background="Transparent"
+                         VerticalContentAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Margin="0,20,0,30">
+                <TextBlock Text="Hasło: "
+                       Foreground="White"
+                       FontSize="20"/>
+                <PasswordBox
+                         FontSize="20"
+                         BorderThickness="0,0,0,2"
+                         BorderBrush="#1468c8"
+                         Background="Transparent"
+                         VerticalContentAlignment="Center"/>
+            </DockPanel>
+
+            <Button
+                    Width="200"
+                    Height="40"
+                    Content="Zaloguj się"
+                    FontSize="16"
+                    Margin="0,0,0,40"/>
+
+            <DockPanel>
+                <TextBlock Text="Nie masz konta? Na co jeszcze czekasz zarejestruj się:"
+                           Foreground="White"
+                           FontSize="10"/>
+                <Button
+                    Width="80"
+                    Height="20"
+                    Content="Rejestracja"
+                    HorizontalAlignment="Right"/>
+            </DockPanel>
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>

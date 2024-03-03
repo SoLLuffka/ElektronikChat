@@ -4,9 +4,86 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElektronikChat"
+        xmlns:viewModel="clr-namespace:ElektronikChat.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Width="1200" Height="800"
+        Title="Elektronik-Czat"
+        ResizeMode="NoResize">
 
-    </Grid>
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    
+    <Border>
+        <Border.Background> <!---gradient tla-->
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                <GradientStop Color="#6aa9f0" Offset="0.0"/>
+                <GradientStop Color="#0d67f8" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid> <!--struktura strony / tak jak w html sekcje headery itp-->
+           
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Elektronik Czat"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="White"
+            FontSize="16"
+            FontWeight="Bold"/>
+
+            <StackPanel Grid.Row="1">
+
+                <RadioButton Content="Home"
+                    Height="80"
+                    FontSize="20"
+                    Style="{StaticResource HomeButtonTheme}"
+                    IsChecked="True"
+                    Command="{Binding HomeViewCommand}"/>
+                
+                <RadioButton Content="Chat"
+                    Height="80"
+                    FontSize="20"
+                    Style="{StaticResource HomeButtonTheme}"/>
+
+                <RadioButton Content="Fiszki"
+                    Height="80"
+                    FontSize="20"
+                    Style="{StaticResource HomeButtonTheme}"/>
+
+                <RadioButton Content="Szkoła"
+                    Height="80"
+                    FontSize="20"
+                    Style="{StaticResource HomeButtonTheme}"/>
+
+                <RadioButton Content="Opcje"
+                    Height="80"
+                    FontSize="20"
+                    Style="{StaticResource HomeButtonTheme}"
+                    Margin="0,220,0,0"/>
+                <RadioButton Content="Login"
+                    Height="80"
+                    FontSize="20"
+                    Style="{StaticResource HomeButtonTheme}"
+                    Command="{Binding LoginViewCommand}"/>
+
+            </StackPanel>
+
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Content="{Binding CurrentView}"/>
+
+        </Grid>
+
+
+    </Border>
 </Window>
