@@ -1,4 +1,7 @@
-﻿using System.Text;
+﻿using System.Data;
+using System.Data.Common;
+using System.Data.SQLite;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,14 +14,40 @@ using System.Windows.Shapes;
 
 namespace ElektronikChat
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        private DBConnection dbConnection;
+
         public MainWindow()
         {
             InitializeComponent();
+            dbConnection = new DBConnection();
+            dbConnection.InitializeDatabase();
+            ExecuteSelectQuery(); // Dodaj to wywołanie metody tutaj
+        }
+
+        private void ExecuteSelectQuery()
+        {
+            string sql = "SELECT * FROM Users";
+            using (var command = new SQLiteCommand(sql, dbConnection.GetConnection()))
+            {
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    if (!reader.HasRows)
+                    {
+                        MessageBox.Show("Brak danych w tabeli Users.");
+                        return;
+                    }
+
+                    while (reader.Read())
+                    {
+                        // Przetwarzaj wyniki, np.:
+                        string login = reader["login"].ToString();
+                        MessageBox.Show($"Login: {login}"); // Wyświetl wyniki w MessageBox
+                                                            // I tak dalej dla innych kolumn...
+                    }
+                }
+            }
         }
     }
 }
