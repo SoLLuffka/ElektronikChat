@@ -14,10 +14,12 @@ namespace ElektronikChat.ViewModel
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand LoginViewCommand { get; set; }
         public RelayCommand RegisterViewCommand { get; set; }
+        public RelayCommand TextChatViewCommand { get; set; }
 
         public HomeViewModel HomeVM { get; set; }
         public LoginViewModel LoginVM { get; set; }
         public RegisterViewModel RegisterVM { get; set; }
+        public TextChatVIewModel TextChatVM { get; set; }
 
         private object _currentView;
 
@@ -35,6 +37,7 @@ namespace ElektronikChat.ViewModel
             HomeVM = new HomeViewModel();
             LoginVM = new LoginViewModel();
             RegisterVM = new RegisterViewModel();
+            TextChatVM = new TextChatVIewModel();
 
             CurrentView = HomeVM;
 
@@ -49,6 +52,10 @@ namespace ElektronikChat.ViewModel
             RegisterViewCommand = new RelayCommand(o =>
             {
                 CurrentView = RegisterVM;
+            });
+            TextChatViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = TextChatVM;
             });
         }
     }

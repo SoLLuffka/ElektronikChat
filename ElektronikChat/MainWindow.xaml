@@ -53,7 +53,8 @@
                 <RadioButton Content="Chat"
                     Height="80"
                     FontSize="20"
-                    Style="{StaticResource HomeButtonTheme}"/>
+                    Style="{StaticResource HomeButtonTheme}"
+                    Command="{Binding TextChatViewCommand}"/>
 
                 <RadioButton Content="Fiszki"
                     Height="80"

@@ -8,7 +8,6 @@
     <Application.Resources>
         <ResourceDictionary>
             <!---Podpięcie stylu do strony -->
-
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/HomeButtonTheme.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
@@ -17,14 +16,22 @@
                 <!---widok menu glownego-->
                 <view:HomeView/>
             </DataTemplate>
+            
             <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
                 <!---widok logowania-->
                 <view:LoginView/>
             </DataTemplate>
+            
             <DataTemplate DataType="{x:Type viewModel:RegisterViewModel}">
                 <!---widok rejestracji-->
                 <view:RegisterView/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:TextChatVIewModel}">
+                <!--widok czatu-->
+                <view:TextChatView/>
+            </DataTemplate>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>
