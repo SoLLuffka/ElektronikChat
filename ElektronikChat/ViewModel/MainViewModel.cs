@@ -10,12 +10,13 @@ namespace ElektronikChat.ViewModel
 {
     internal class MainViewModel : ObservableObject
     {
-
+        //relay komendy do zmiany widoku z menu glownego
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand LoginViewCommand { get; set; }
         public RelayCommand RegisterViewCommand { get; set; }
         public RelayCommand TextChatViewCommand { get; set; }
 
+        //dostepne widoki
         public HomeViewModel HomeVM { get; set; }
         public LoginViewModel LoginVM { get; set; }
         public RegisterViewModel RegisterVM { get; set; }
@@ -39,7 +40,7 @@ namespace ElektronikChat.ViewModel
             RegisterVM = new RegisterViewModel();
             TextChatVM = new TextChatVIewModel();
 
-            CurrentView = HomeVM;
+            CurrentView = RegisterVM;//domyslny widok po uruchomieniu aplikacji
 
             HomeViewCommand = new RelayCommand(o => 
             {

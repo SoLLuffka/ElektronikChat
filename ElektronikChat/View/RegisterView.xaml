@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ElektronikChat.View"
+             xmlns:local="clr-namespace:ElektronikChat.View" xmlns:viewmodel="clr-namespace:ElektronikChat.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="720" d:DesignWidth="1080">
+    <UserControl.DataContext>
+        <viewmodel:MainViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -25,12 +28,14 @@
         <StackPanel Grid.Row="1"  Width="600"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
-            <!---elementy formularza-->
+            <!---elementy formularza--> <!--x:name sigan :)-->
             <DockPanel Margin="0,0,0,20">
+                <!--imie--> 
                 <TextBlock Text="Imię: "
                        Foreground="White"
                        FontSize="20"/>
-                <TextBox 
+                
+                <TextBox x:Name="firstname"
                          FontSize="20"
                          BorderThickness="0,0,0,2"
                          BorderBrush="#1468c8"
@@ -38,10 +43,12 @@
                          VerticalContentAlignment="Center"
                          Width="180"
                          Margin="0,0,20,0"/>
+                <!--nazwisko-->
                 <TextBlock Text="Nazwisko: "
                          Foreground="White"
                          FontSize="20"/>
-                <TextBox 
+
+                <TextBox x:Name="lastname"
                          FontSize="20"
                          BorderThickness="0,0,0,2"
                          BorderBrush="#1468c8"
@@ -51,10 +58,12 @@
             </DockPanel>
 
             <DockPanel Margin="0,0,0,20">
+                <!--E-mail-->
                 <TextBlock Text="E-mail: "
                       Foreground="White"
                       FontSize="20"/>
-                <TextBox 
+
+                <TextBox x:Name="email"
                      FontSize="20"
                      BorderThickness="0,0,0,2"
                      BorderBrush="#1468c8"
@@ -62,20 +71,12 @@
                      VerticalContentAlignment="Center"
                      Width="230"
                      Margin="0,0,20,0"/>
-                <TextBlock Text="Data Urodzenia: "
-                     Foreground="White"
-                     FontSize="20"/>
-                <DatePicker 
-                     Background="Transparent"
-                     Width="140"
-                     VerticalContentAlignment="Center"/>
-            </DockPanel>
-
-            <DockPanel Margin="0,0,0,40">
+                <!--login-->
                 <TextBlock Text="login: "
                       Foreground="White"
                       FontSize="20"/>
-                <TextBox 
+
+                <TextBox x:Name="login"
                      FontSize="20"
                      BorderThickness="0,0,0,2"
                      BorderBrush="#1468c8"
@@ -83,16 +84,34 @@
                      VerticalContentAlignment="Center"
                      Width="200"
                      Margin="0,0,20,0"/>
+            </DockPanel>
+
+            <DockPanel Margin="0,0,0,40">
+                <!--haslo 1-->
                 <TextBlock Text="hasło: "
                      Foreground="White"
                      FontSize="20"/>
-                <TextBox 
+
+                <PasswordBox x:Name="password"
                      FontSize="20"
                      BorderThickness="0,0,0,2"
                      BorderBrush="#1468c8"
                      Background="Transparent"
                      VerticalContentAlignment="Center"
-                     Width="270"/>
+                     Width="194"
+                     Margin="0,0,20,0"/>
+                <!--haslo 2-->
+                <TextBlock Text="Powtórz hasło: "
+                     Foreground="White"
+                     FontSize="20"/>
+
+                <PasswordBox x:Name="password_check"
+                     FontSize="20"
+                     BorderThickness="0,0,0,2"
+                     BorderBrush="#1468c8"
+                     Background="Transparent"
+                     VerticalContentAlignment="Center"
+                     Width="194"/>
             </DockPanel>
 
             <Button 
