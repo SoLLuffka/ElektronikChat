@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ElektronikChat.View"
+             xmlns:local="clr-namespace:ElektronikChat.View" xmlns:viewmodel="clr-namespace:ElektronikChat.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1080">
     <Grid Background="White">
@@ -63,7 +63,8 @@
             <Button Content="Wyślij z Pliku"
                     HorizontalAlignment="Right"
                     Margin="0,0,20,0"/>
-            <Button Content="WYŚLIJ"/>
+            <Button Content="WYŚLIJ"
+                    Command="{Binding ConnectToServerCommand}"/>
 
             <TextBox
                 HorizontalAlignment="Center"

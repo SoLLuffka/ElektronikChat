@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElektronikChat", "ElektronikChat\ElektronikChat.csproj", "{F7763848-09C0-4A3D-B81A-87543226A1EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElektronikChat", "ElektronikChat\ElektronikChat.csproj", "{F7763848-09C0-4A3D-B81A-87543226A1EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElektronikServer", "ElektronikServer\ElektronikServer.csproj", "{8391FAAD-DBD5-4EE4-A045-EBE510381EAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F7763848-09C0-4A3D-B81A-87543226A1EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7763848-09C0-4A3D-B81A-87543226A1EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7763848-09C0-4A3D-B81A-87543226A1EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8391FAAD-DBD5-4EE4-A045-EBE510381EAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8391FAAD-DBD5-4EE4-A045-EBE510381EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8391FAAD-DBD5-4EE4-A045-EBE510381EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8391FAAD-DBD5-4EE4-A045-EBE510381EAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

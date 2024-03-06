@@ -70,7 +70,8 @@
                     Height="80"
                     FontSize="20"
                     Style="{StaticResource HomeButtonTheme}"
-                    Margin="0,220,0,0"/>
+                    Margin="0,220,0,0"
+                    Command="{Binding ConnectToServerCommand}"/>
                 <RadioButton Content="Login"
                     Height="80"
                     FontSize="20"
