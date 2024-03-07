@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElektronikChat.Net.IO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -21,6 +22,10 @@ namespace ElektronikChat.Core.Net
             if(!_client.Connected)
             {
                 _client.Connect("127.0.0.1", 22000);
+                var connectPacket = new PacketBuilder();
+                connectPacket.WriteOpCode(0);
+                connectPacket.WriteString(username);
+                _client.Client.Send(connectPacket.GetPacketBytes());
             }
         }
     }
