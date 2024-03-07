@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ElektronikChat.Core;
+using ElektronikChat.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,14 +17,28 @@ using System.Windows.Shapes;
 
 namespace ElektronikChat.View
 {
-    /// <summary>
-    /// Logika interakcji dla klasy RegisterView.xaml
-    /// </summary>
     public partial class RegisterView : UserControl
     {
         public RegisterView()
         {
             InitializeComponent();
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterViewModel data = new RegisterViewModel
+            {
+                FirstName = this.firstname.Text,
+                LastName = this.lastname.Text,
+                Email = this.email.Text,
+                Login = this.login.Text,
+                Password = this.password.Password,
+                PasswordCheck = this.password_check.Password,
+            };
+
+            Window parentWindow = Window.GetWindow(this);
+
+            Register.Registration(data, parentWindow);
         }
     }
 }
