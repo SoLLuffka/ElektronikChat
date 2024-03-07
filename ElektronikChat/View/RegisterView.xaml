@@ -121,7 +121,8 @@
                     Width="260"
                     Height="60"
                     Content="Zarejestruj się"
-                    FontSize="20"/>
+                    FontSize="20"
+                    Click="RegisterButton_Click"/>
 
         </StackPanel>
 
