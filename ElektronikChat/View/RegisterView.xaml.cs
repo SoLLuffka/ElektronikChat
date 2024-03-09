@@ -1,5 +1,6 @@
 ﻿using ElektronikChat.Core;
 using ElektronikChat.ViewModel;
+using ElektronikChat.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +38,9 @@ namespace ElektronikChat.View
             };
 
             Window parentWindow = Window.GetWindow(this);
-
             Register.Registration(data, parentWindow);
+
+            
         }
     }
 }

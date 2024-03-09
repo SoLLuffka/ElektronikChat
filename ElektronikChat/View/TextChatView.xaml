@@ -34,11 +34,25 @@
                 BorderBrush="#1c4a82"
                 Height="570"
                 VerticalAlignment="Top">
+            <StackPanel>
+                <TextBlock Text="Lista Kontaktów"
+                    Foreground="Black"
+                    HorizontalAlignment="Center"
+                    FontSize="22"/>
+
+                <TextBox FontSize="30"
+                         Margin="0,20,0,0"
+                         BorderBrush="Black"
+                         Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Button Width="200"
+                    Height="30"
+                    Content="Rejestracja"
+                    Command="{Binding ConnectToServerCommand}"/>
+            </StackPanel>
+
             
-            <TextBlock Text="Lista Kontaktów"
-                       Foreground="Black"
-                       HorizontalAlignment="Center"
-                       FontSize="22"/>
+            
         </Border>
         
         <!--pole na wyslana wiadomosc-->
@@ -58,23 +72,24 @@
         <!--Pole na wpisanie wiadomosci-->
         <DockPanel Grid.Row="1"
                    Grid.Column="1"
-                   Height="40"
-                   Margin="0,540,0,0">
+                   Height="60"
+                   Margin="0,580,0,0">
             <Button Content="Wyślij z Pliku"
                     HorizontalAlignment="Right"
                     Margin="0,0,20,0"/>
-            <Button Content="WYŚLIJ"
-                    Command="{Binding ConnectToServerCommand}"/>
+            <Button Content="WYŚLIJ"/>
+            <!--Command="{Binding ConnectToServerCommand}"-->
 
             <TextBox
                 HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
                 Width="710"
                 BorderThickness="0,0,0,2"
                 BorderBrush="#1468c8"
                 Background="Transparent"
                 Margin="0,0,0,0"
-                FontSize="30"
-                Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}">
+                FontSize="50">
+                <!--Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"-->
             </TextBox>
         </DockPanel>
         

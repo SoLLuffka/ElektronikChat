@@ -6,20 +6,21 @@
         xmlns:local="clr-namespace:ElektronikChat"
         xmlns:viewModel="clr-namespace:ElektronikChat.ViewModel"
         mc:Ignorable="d"
-        Width="1200" Height="800"
+        Width="1200" Height="850"
         Title="Elektronik-Czat"
-        ResizeMode="NoResize">
+        >
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    
+
     <Border>
         <Border.Background> <!---gradient tla-->
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                <GradientStop Color="#6aa9f0" Offset="0.0"/>
-                <GradientStop Color="#0d67f8" Offset="1"/>
-            </LinearGradientBrush>
+            <RadialGradientBrush GradientOrigin="1,0" Center="0.6,0.5">
+                <GradientStop Color="#abcff7" Offset="0.1"/>
+                <GradientStop Color="#6ba0f5" Offset="0.4"/>
+                <GradientStop Color="#1b69d0" Offset="1.2"/>
+            </RadialGradientBrush>
         </Border.Background>
 
         <Grid> <!--struktura strony / tak jak w html sekcje headery itp-->
@@ -31,7 +32,8 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
-                <RowDefinition/>
+                <RowDefinition Height="720"/>
+                <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="Elektronik Czat"
@@ -78,6 +80,16 @@
                     Style="{StaticResource HomeButtonTheme}"
                     Command="{Binding LoginViewCommand}"/>
 
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="1">
+                <TextBlock Text="Made By: Miłosz Jakubowski, Kamil Ruszała, Kamil Tereszkiewicz"
+                       Foreground="Gray"
+                       FontSize="10"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right">
+                    
+                </TextBlock>
             </StackPanel>
 
             <ContentControl Grid.Row="1"
