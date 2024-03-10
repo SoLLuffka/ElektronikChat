@@ -14,6 +14,7 @@ namespace ElektronikChat.Core
     {
         public static void Registration(RegisterViewModel data, Window parentWindow)
         {
+            string sql = "INSERT INTO Users(login, password, firstname, lastname, email) VALUES (@Login, @Password, @FirstName, @LastName, @Email);";
             MessageBox.Show($"Registration Data: {data.FirstName}, {data.LastName}, {data.Email}, {data.Login}, {data.Password}, {data.PasswordCheck}");
         }
     }

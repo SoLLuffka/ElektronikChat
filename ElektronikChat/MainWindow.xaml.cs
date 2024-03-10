@@ -45,8 +45,10 @@ namespace ElektronikChat
                     while (reader.Read())
                     {
                         // Przetwarzaj wyniki, np.:
-                        string login = reader["login"].ToString();
-                        MessageBox.Show($"Login: {login}"); // Wyświetl wyniki w MessageBox
+                        string id = reader["idUsers"].ToString();
+                        string firstname = reader["firstname"].ToString();
+                        string lastname = reader["lastname"].ToString();
+                        MessageBox.Show($"{firstname} {lastname} {id}"); // Wyświetl wyniki w MessageBox
                                                             // I tak dalej dla innych kolumn...
                     }
                 }

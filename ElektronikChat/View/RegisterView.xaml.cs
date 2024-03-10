@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace ElektronikChat.View
 {
@@ -23,6 +24,46 @@ namespace ElektronikChat.View
         public RegisterView()
         {
             InitializeComponent();
+        }
+
+        private bool ValidateForm(RegisterViewModel data)
+        {
+            var emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            var passwordPattern = @"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
+            var namePattern = @"^[A-Z][a-z]+$";
+            var surnamePattern = @"^[A-Z][a-z]+(?:[-' ][A-Z][a-z]+)*$";
+
+            if (!Regex.IsMatch(data.Email, emailPattern))
+            {
+                MessageBox.Show("Proszę podać prawidłowy adres email.");
+                return false;
+            }
+
+            if (!Regex.IsMatch(data.Password, passwordPattern))
+            {
+                MessageBox.Show("Hasło jest nieprawidłowe. Musi zawierać co najmniej 8 znaków, w tym literę i cyfrę.");
+                return false;
+            }
+
+            if (!Regex.IsMatch(data.Login, namePattern))
+            {
+                MessageBox.Show("Login jest nieprawidłowe. Musi zawierać co najmniej 8 znaków, w tym literę i cyfrę.");
+                return false;
+            }
+
+            if (!Regex.IsMatch(data.FirstName, namePattern))
+            {
+                MessageBox.Show("Imie jest nieprawidłowe. Musi zawierać co najmniej 8 znaków, w tym literę i cyfrę.");
+                return false;
+            }
+
+            if (!Regex.IsMatch(data.LastName, surnamePattern))
+            {
+                MessageBox.Show("Nazwisko jest nieprawidłowe. Musi zawierać co najmniej 8 znaków, w tym literę i cyfrę.");
+                return false;
+            }
+
+            return true;
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
@@ -40,7 +81,12 @@ namespace ElektronikChat.View
             Window parentWindow = Window.GetWindow(this);
             Register.Registration(data, parentWindow);
 
-            
+            if (ValidateForm(data))
+            {
+                DBHelper.InsertUser(data);
+            } else {
+
+            }
         }
     }
 }
