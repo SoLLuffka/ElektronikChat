@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ElektronikChat.Core;
+using ElektronikChat.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,24 @@ namespace ElektronikChat.View
         public LoginView()
         {
             InitializeComponent();
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            var mainViewModel = Application.Current.MainWindow.DataContext as MainViewModel;
+            if (mainViewModel != null)
+            {
+                mainViewModel.CurrentView = mainViewModel.HomeVM;
+            }
+        }
+
+        private void RegButton_Click(Object sender, RoutedEventArgs e)
+        {
+            var mainViewModel = Application.Current.MainWindow.DataContext as MainViewModel;
+            if (mainViewModel != null)
+            {
+                mainViewModel.CurrentView = mainViewModel.RegisterVM;
+            }
         }
     }
 }

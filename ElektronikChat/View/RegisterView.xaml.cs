@@ -84,8 +84,17 @@ namespace ElektronikChat.View
             if (ValidateForm(data))
             {
                 DBHelper.InsertUser(data);
+                SwitchToLoginView();
             } else {
                 MessageBox.Show("Internal Server Error");
+            }
+        }
+        private void SwitchToLoginView()
+        {
+            var mainViewModel = Application.Current.MainWindow.DataContext as MainViewModel;
+            if (mainViewModel != null)
+            {
+                mainViewModel.CurrentView = mainViewModel.LoginVM;
             }
         }
     }

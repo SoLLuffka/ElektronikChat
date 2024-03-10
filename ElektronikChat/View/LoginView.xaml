@@ -55,6 +55,7 @@
             </DockPanel>
 
             <Button
+                    Click="LoginButton_Click"
                     Width="200"
                     Height="60"
                     Content="Zaloguj się"
@@ -67,6 +68,7 @@
                            Foreground="White"
                            FontSize="30"/>
                 <Button
+                    Click="RegButton_Click"
                     Width="80"
                     Height="36"
                     Content="Rejestracja"

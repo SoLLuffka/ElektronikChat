@@ -94,7 +94,8 @@
 
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
-                            Content="{Binding CurrentView}"/>
+                            Content="{Binding CurrentView}"
+                            x:Name="MainContent"/>
 
         </Grid>
 
