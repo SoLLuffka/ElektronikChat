@@ -45,21 +45,21 @@ namespace ElektronikChat.View
                 return false;
             }
 
-            if (!Regex.IsMatch(data.Login, namePattern))
+            if (!Regex.IsMatch(data.Login, namePattern)) // Do poprawy w bazie do jebniecia n uq i zmienienie tego if'a
             {
-                MessageBox.Show("Login jest nieprawidłowe. Musi zawierać co najmniej 8 znaków, w tym literę i cyfrę.");
+                MessageBox.Show("Login jest nieprawidłowe. Musi on byc unikalny.");
                 return false;
             }
 
             if (!Regex.IsMatch(data.FirstName, namePattern))
             {
-                MessageBox.Show("Imie jest nieprawidłowe. Musi zawierać co najmniej 8 znaków, w tym literę i cyfrę.");
+                MessageBox.Show("Imie jest nieprawidłowe. Musi zaczynac sie ono z duzej litery.");
                 return false;
             }
 
             if (!Regex.IsMatch(data.LastName, surnamePattern))
             {
-                MessageBox.Show("Nazwisko jest nieprawidłowe. Musi zawierać co najmniej 8 znaków, w tym literę i cyfrę.");
+                MessageBox.Show("Nazwisko jest nieprawidłowe. Musi zaczynac sie ono z duzej litery.");
                 return false;
             }
 
@@ -85,7 +85,7 @@ namespace ElektronikChat.View
             {
                 DBHelper.InsertUser(data);
             } else {
-
+                MessageBox.Show("Internal Server Error");
             }
         }
     }
