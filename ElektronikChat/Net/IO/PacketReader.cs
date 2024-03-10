@@ -23,7 +23,7 @@ namespace ElektronikChat.Net.IO
             msgBffer = new byte[length];
             _ns.Read(msgBffer, 0, length);
 
-            var msg = Encoding.ASCII.GetString(msgBffer);
+            var msg = Encoding.UTF8.GetString(msgBffer);
             return msg;
         }
     }

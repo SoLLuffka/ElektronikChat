@@ -34,7 +34,7 @@
                 BorderBrush="#1c4a82"
                 Height="570"
                 VerticalAlignment="Top">
-            <StackPanel>
+            <StackPanel Margin="0,-2,0,0">
                 <TextBlock Text="Lista Kontaktów"
                     Foreground="Black"
                     HorizontalAlignment="Center"
@@ -49,6 +49,16 @@
                     Height="30"
                     Content="Rejestracja"
                     Command="{Binding ConnectToServerCommand}"/>
+                <ListView Height="445"
+                          ItemsSource="{Binding Users}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Username}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                </ListView>
+
             </StackPanel>
 
             
@@ -62,9 +72,10 @@
                       VerticalAlignment="Top">
             <Border BorderThickness="2,2,2,2"
                     BorderBrush="#6aa9f0">
-                <StackPanel>
-            
-                </StackPanel>
+                <ListView
+                    ItemsSource="{Binding Messages}">
+                    
+                </ListView>
             </Border>
         </ScrollViewer>
         
@@ -77,7 +88,8 @@
             <Button Content="Wyślij z Pliku"
                     HorizontalAlignment="Right"
                     Margin="0,0,20,0"/>
-            <Button Content="WYŚLIJ"/>
+            <Button Content="WYŚLIJ"
+                    Command="{Binding SendMessageCommand}"/>
             <!--Command="{Binding ConnectToServerCommand}"-->
 
             <TextBox
@@ -88,7 +100,8 @@
                 BorderBrush="#1468c8"
                 Background="Transparent"
                 Margin="0,0,0,0"
-                FontSize="50">
+                FontSize="50"
+                Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}">
                 <!--Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"-->
             </TextBox>
         </DockPanel>

@@ -26,6 +26,36 @@ namespace ElektronikServer
             Username = _packetReader.ReadMessage();
 
             Console.WriteLine($"[{DateTime.Now}]:{Username} has connected");
+
+            Task.Run(() => Process());
+        }
+
+        void Process()
+        {
+            while (true)
+            {
+                try
+                {
+                    var opcode = _packetReader.ReadByte();
+                    switch (opcode)
+                    {
+                        case 5:
+                            var msg = _packetReader.ReadMessage();
+                            Console.WriteLine($"[{DateTime.Now}]: Message received {msg} from {Username}");
+                            program.BroadcastMessage($"[{DateTime.Now}]: [{Username}]: {msg}");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                catch (Exception) 
+                {
+                    Console.WriteLine($"[{UID},{Username}]: Disconnected");
+                    program.BroadcastDisconnect(UID.ToString());
+                    ClientScoket.Close();
+                    break;
+                }
+            }
         }
     }
 }
