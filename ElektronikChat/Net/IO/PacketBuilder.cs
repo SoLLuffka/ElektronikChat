@@ -20,15 +20,16 @@ namespace ElektronikChat.Net.IO
             _ms.WriteByte(opcode);
         }
 
-        public void WriteMessage(string msg) 
+        public void WriteMessage(string msg)
         {
-            var msgLength = msg.Length;
+            var msgBytes = Encoding.UTF8.GetBytes(msg);
+            var msgLength = msgBytes.Length;
             _ms.Write(BitConverter.GetBytes(msgLength));
-            _ms.Write(Encoding.UTF8.GetBytes(msg));
+            _ms.Write(msgBytes);
         }
 
         public byte[] GetPacketBytes()
-        { 
+        {
             return _ms.ToArray();
         }
     }

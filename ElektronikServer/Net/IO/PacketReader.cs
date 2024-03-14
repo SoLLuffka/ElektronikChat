@@ -17,9 +17,10 @@ namespace ElektronikServer.Net.IO
 
         public string ReadMessage()
         {
-            byte[] msgBffer;
-            var length = ReadInt32();
-            msgBffer = new byte[length];
+            //byte[] msgBffer;
+            var lenghtBytes = ReadBytes(4);
+            var length = BitConverter.ToInt32(lenghtBytes, 0);
+            var msgBffer = new byte[length];
             _ns.Read(msgBffer, 0, length);
 
             var msg = Encoding.UTF8.GetString(msgBffer);
