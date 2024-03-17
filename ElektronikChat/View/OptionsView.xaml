@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="ElektronikChat.View.OptionsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ElektronikChat.View"
+      xmlns:viewmodel="clr-namespace:ElektronikChat.ViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="Opcje"
+                   Foreground="White"
+                   FontSize="34"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Margin="0,10,0,0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                Height="600"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+            <!--elementy formularza-->
+            <DockPanel Margin="0,160,0,0">
+                <TextBlock Text="Login: "
+                   Foreground="White"
+                   FontSize="40"
+                   Margin="0,0,20,0"/>
+                <TextBox 
+                     FontSize="40"
+                     BorderThickness="0,0,0,2"
+                     BorderBrush="#1468c8"
+                     Background="Transparent"
+                     VerticalContentAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Margin="0,60,0,60">
+                <TextBlock Text="Hasło: "
+                   Foreground="White"
+                   FontSize="40"
+                   Margin="0,0,20,0"/>
+                <PasswordBox
+                     FontSize="40"
+                     BorderThickness="0,0,0,2"
+                     BorderBrush="#1468c8"
+                     Background="Transparent"
+                     VerticalContentAlignment="Center"/>
+            </DockPanel>
+
+            <Button
+                Width="200"
+                Height="60"
+                Content="elozelo"
+                FontSize="16"
+                Margin="0,0,0,40"
+                BorderBrush="#1468c8"
+                Background="LightBlue"
+                BorderThickness="2"/>
+
+            <DockPanel>
+                <TextBlock  Margin="20,0,0,0"
+                       Text="Wypierdalaj"
+                       Foreground="White"
+                       FontSize="30"/>
+            </DockPanel>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

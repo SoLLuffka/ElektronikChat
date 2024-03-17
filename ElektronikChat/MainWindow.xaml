@@ -6,9 +6,10 @@
         xmlns:local="clr-namespace:ElektronikChat"
         xmlns:viewModel="clr-namespace:ElektronikChat.ViewModel"
         mc:Ignorable="d"
-        Width="1200" Height="850"
+        MinWidth="500" MinHeight="600"
+        Width="1080" Height="800"
         Title="Elektronik-Czat"
-        >
+        ResizeMode="CanResizeWithGrip">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
@@ -31,19 +32,13 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="720"/>
+                <RowDefinition/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Elektronik Czat"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            Foreground="White"
-            FontSize="16"
-            FontWeight="Bold"/>
 
-            <StackPanel Grid.Row="1">
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <!--jak tworzysz nowy widok to: zrob ViewModel, podlacz do app.xaml, zrob usercontrol i kolejna komende w MainViewModel-->
 
                 <RadioButton Content="Home"
                     Height="80"
@@ -51,7 +46,7 @@
                     Style="{StaticResource HomeButtonTheme}"
                     IsChecked="True"
                     Command="{Binding HomeViewCommand}"/>
-                
+
                 <RadioButton Content="Chat"
                     Height="80"
                     FontSize="20"
@@ -73,7 +68,9 @@
                     FontSize="20"
                     Style="{StaticResource HomeButtonTheme}"
                     Margin="0,220,0,0"
-                    Command="{Binding ConnectToServerCommand}"/>
+                    Command="{Binding OptionsViewCommand}">
+                </RadioButton>
+                    
                 <RadioButton Content="Login"
                     Height="80"
                     FontSize="20"
@@ -82,20 +79,18 @@
 
             </StackPanel>
 
-            <StackPanel Grid.Row="2" Grid.Column="1">
-                <TextBlock Text="Made By: Miłosz Jakubowski, Kamil Ruszała, Kamil Tereszkiewicz"
-                       Foreground="Gray"
-                       FontSize="10"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Right">
-                    
-                </TextBlock>
-            </StackPanel>
-
-            <ContentControl Grid.Row="1"
+            <ContentControl Grid.Row="0"
                             Grid.Column="1"
                             Content="{Binding CurrentView}"
                             x:Name="MainContent"/>
+
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <TextBlock Text="Made By: Miłosz Jakubowski, Kamil Ruszała, Kamil Tereszkiewicz"
+                    Foreground="Gray"
+                    FontSize="15"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"/>
+            </StackPanel>
 
         </Grid>
 

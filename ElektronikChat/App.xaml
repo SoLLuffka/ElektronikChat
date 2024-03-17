@@ -31,7 +31,12 @@
                 <!--widok czatu-->
                 <view:TextChatView/>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type viewModel:OptionsViewModel}">
+                <!--widok czatu-->
+                <view:OptionsView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
