@@ -21,9 +21,13 @@ namespace ElektronikChat.View
 {
     public partial class RegisterView : UserControl
     {
+        public RegisterViewModel _registerViewModel;
+
         public RegisterView()
         {
             InitializeComponent();
+            _registerViewModel = new RegisterViewModel();
+            this.DataContext = new RegisterViewModel();
         }
 
         private bool ValidateForm(RegisterViewModel data)
@@ -77,6 +81,8 @@ namespace ElektronikChat.View
                 Password = this.password.Password,
                 PasswordCheck = this.password_check.Password,
             };
+
+            _registerViewModel.Register();
 
             Window parentWindow = Window.GetWindow(this);
             Register.Registration(data, parentWindow);

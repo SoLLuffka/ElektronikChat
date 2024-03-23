@@ -29,6 +29,11 @@ namespace ElektronikChat.ViewModel
 
         private object _currentView;
 
+        // zmienne czatu
+
+        Server _server;
+
+
         public object CurrentView
         {
             get { return _currentView; }
@@ -68,6 +73,12 @@ namespace ElektronikChat.ViewModel
             {
                 CurrentView = OptionsVM;
             });
+
+            // metody i zmienne czatu
+
+            _server = new Server();
+            //_server.ConnectToServer2();
+
         }
     }
 }
