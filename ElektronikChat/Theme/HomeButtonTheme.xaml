@@ -15,7 +15,8 @@
 
 
                             <TextBlock Text="{TemplateBinding Property=Content}"
-                                       Foreground="Black"
+                                       Foreground="White"
+                                       FontWeight="Bold"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"/>
 

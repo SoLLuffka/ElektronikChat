@@ -21,104 +21,112 @@
             <TextBlock Text="Rejestracja"
                        Foreground="White"
                         FontSize="30"
+                        FontWeight="Bold"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         Margin="0,20,0,0"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1"  
-                    Height="600" Width="860"
+                    Height="600"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
+            <Label Width="720"/> <!--nielegalne ustawienie szerokosci formularze-->
             <!---elementy formularza--> <!--x:name sigan :)-->
             <DockPanel Margin="0,40,0,0">
                 <!--imie--> 
                 <TextBlock Text="Imię: "
                        Foreground="White"
-                       FontSize="35"/>
+                       FontSize="30"
+                       Margin="120,0,0,0"/>
 
                 <TextBox x:Name="firstname"
-                         FontSize="35"
+                         FontSize="30"
+                         FontWeight="Bold"
                          BorderThickness="0,0,0,2"
-                         BorderBrush="#1468c8"
+                         BorderBrush="#242529"
                          Background="Transparent"
-                         VerticalContentAlignment="Center"
-                         Margin="90,0,100,0"/>
+                         VerticalContentAlignment="Center"/>
             </DockPanel>
 
             <DockPanel Margin="0,20,0,0">
                  <!--nazwisko-->
                  <TextBlock Text="Nazwisko: "
                          Foreground="White"
-                         FontSize="35"/>
+                         FontSize="30"
+                         Margin="50,0,0,0"/>
 
                 <TextBox x:Name="lastname"
-                         FontSize="35"
+                         FontSize="30"
+                         FontWeight="Bold"
                          BorderThickness="0,0,0,2"
-                         BorderBrush="#1468c8"
+                         BorderBrush="#242529"
                          Background="Transparent"
-                         VerticalContentAlignment="Center"
-                         Margin="10,0,100,0"/>
+                         VerticalContentAlignment="Center"/>
                     </DockPanel>
 
             <DockPanel Margin="0,20,0,0">
                 <!--E-mail-->
                 <TextBlock Text="E-mail: "
                       Foreground="White"
-                      FontSize="35"/>
+                      FontSize="30"
+                      Margin="90,0,0,0"/>
 
                 <TextBox x:Name="email"
-                     FontSize="35"
+                     FontSize="30"
+                     FontWeight="Bold"
                      BorderThickness="0,0,0,2"
-                     BorderBrush="#1468c8"
+                     BorderBrush="#242529"
                      Background="Transparent"
-                     VerticalContentAlignment="Center"
-                     Margin="60,0,100,0"/>
+                     VerticalContentAlignment="Center"/>
             </DockPanel>
 
             <DockPanel Margin="0,20,0,0">
                 <!--login-->
                 <TextBlock Text="login: "
                      Foreground="White"
-                     FontSize="35"/>
+                     FontSize="30"
+                     Margin="106,0,0,0"/>
 
                 <TextBox x:Name="login"
-                     FontSize="35"
+                     FontSize="30"
+                     FontWeight="Bold"
                      BorderThickness="0,0,0,2"
-                     BorderBrush="#1468c8"
+                     BorderBrush="#242529"
                      Background="Transparent"
-                     VerticalContentAlignment="Center"
-                     Margin="80,0,100,0"/>
+                     VerticalContentAlignment="Center"/>
             </DockPanel>
 
             <DockPanel Margin="0,20,0,0">
                 <!--haslo-->
                 <TextBlock Text="Hasło: "
                      Foreground="White"
-                     FontSize="35"/>
+                     FontSize="30"
+                     Margin="97,0,0,0"/>
 
                 <PasswordBox x:Name="password"
-                     FontSize="35"
+                     FontSize="30"
+                     FontWeight="Bold"
                      BorderThickness="0,0,0,2"
-                     BorderBrush="#1468c8"
+                     BorderBrush="#242529"
                      Background="Transparent"
-                     VerticalContentAlignment="Center"
-                     Margin="70,0,100,0"/>
+                     VerticalContentAlignment="Center"/>
             </DockPanel>
 
             <DockPanel Margin="0,20,0,0">
                 <!--haslo-->
-                <TextBlock Text="Pw. Hasło: "
+                <TextBlock Text="Powtórz Hasło: "
                      Foreground="White"
-                     FontSize="35"/>
+                     FontSize="30"
+                     Margin="-20,0,0,0"/>
 
                 <PasswordBox x:Name="password_check"
-                     FontSize="35"
+                     FontSize="30"
+                     FontWeight="Bold"
                      BorderThickness="0,0,0,2"
-                     BorderBrush="#1468c8"
+                     BorderBrush="#242529"
                      Background="Transparent"
-                     VerticalContentAlignment="Center"
-                     Margin="5,0,100,0"/>
+                     VerticalContentAlignment="Center"/>
             </DockPanel>
 
             <Button Margin="0,40,0,0"
@@ -126,10 +134,10 @@
                     Height="60"
                     Content="Zarejestruj się"
                     FontSize="30"
+                    FontWeight="SemiBold"
                     Click="RegisterButton_Click"
-                    BorderBrush="#1468c8"
-                    Background="LightBlue"
-                    BorderThickness="2"/>
+                    Background="#3a3b41"
+                    Foreground="White"/>
         </StackPanel>
 
     </Grid>

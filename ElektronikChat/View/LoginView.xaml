@@ -21,6 +21,7 @@
             <TextBlock Text="Logowanie"
                        Foreground="White"
                        FontSize="34"
+                       FontWeight="Bold"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Margin="0,10,0,0"/>
@@ -38,8 +39,9 @@
                        Margin="0,0,20,0"/>
                 <TextBox 
                          FontSize="40"
+                         FontWeight="Bold"
                          BorderThickness="0,0,0,2"
-                         BorderBrush="#1468c8"
+                         BorderBrush="#242529"
                          Background="Transparent"
                          VerticalContentAlignment="Center"/>
             </DockPanel>
@@ -50,8 +52,9 @@
                        Margin="0,0,20,0"/>
                 <PasswordBox
                          FontSize="40"
+                         FontWeight="Bold"
                          BorderThickness="0,0,0,2"
-                         BorderBrush="#1468c8"
+                         BorderBrush="#242529"
                          Background="Transparent"
                          VerticalContentAlignment="Center"/>
             </DockPanel>
@@ -61,11 +64,11 @@
                     Width="200"
                     Height="60"
                     Content="Zaloguj się"
-                    FontSize="16"
+                    FontSize="30"
+                    FontWeight="SemiBold"
                     Margin="0,0,0,40"
-                    BorderBrush="#1468c8"
-                    Background="LightBlue"
-                    BorderThickness="2"/>
+                    Background="#3a3b41"
+                    Foreground="White"/>
 
             <DockPanel>
                 <TextBlock  Margin="20,0,0,0"
@@ -76,10 +79,12 @@
                     Click="RegButton_Click"
                     Width="80"
                     Height="36"
+                    FontSize="14"
+                    FontWeight="SemiBold"
                     Content="Rejestracja"
-                    BorderBrush="#1468c8"
-                    Background="LightBlue"
-                    BorderThickness="2"
+                    Background="#3a3b41"
+                    Foreground="White"
+                    Margin="5,0,0,0"
                     Command="{Binding RegisterViewCommand}"/>
             </DockPanel>
 
