@@ -34,7 +34,7 @@ namespace ElektronikChat.ViewModel
             _server.userDisconnectedEvent += RemoveUser;
 
             ConnectToServerCommand = new RelayCommand(o => _server.ConnectToServer(Username), o => !string.IsNullOrEmpty(Username));
-            SendMessageCommand = new RelayCommand(o => _server.SendMessageToServer(Message), o => !string.IsNullOrEmpty(Message));
+            SendMessageCommand = new RelayCommand(o => _server.SendMessageToServer(Message), o => !string.IsNullOrEmpty(Message)); 
         }
 
         private void RemoveUser()

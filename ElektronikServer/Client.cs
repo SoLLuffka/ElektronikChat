@@ -44,6 +44,10 @@ namespace ElektronikServer
                             Console.WriteLine($"[{DateTime.Now}]: Message received {msg} from {Username}");
                             program.BroadcastMessage($"[{DateTime.Now}]: [{Username}]: {msg}");
                             break;
+                        case 20:
+                            var regData = _packetReader.ReadMessage();
+                            Console.WriteLine("Registration Data Received: " + regData);
+                            break;
                         default:
                             break;
                     }

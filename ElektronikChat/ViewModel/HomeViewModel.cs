@@ -8,5 +8,6 @@ namespace ElektronikChat.ViewModel
 {
     internal class HomeViewModel
     {
+
     }
 }

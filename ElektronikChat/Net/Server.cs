@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,6 +74,14 @@ namespace ElektronikChat.Core.Net
             messagePacket.WriteOpCode(5);
             messagePacket.WriteMessage(message);
             _client.Client.Send(messagePacket.GetPacketBytes());  
+        }
+
+        public void RegisterUser(string message)
+        {
+            var messagePacket = new PacketBuilder();
+            messagePacket.WriteOpCode(20);
+            messagePacket.WriteMessage(message);
+            _client.Client.Send(messagePacket.GetPacketBytes());
         }
     }
 }

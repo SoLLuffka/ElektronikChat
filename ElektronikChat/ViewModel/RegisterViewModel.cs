@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ElektronikChat.Core;
+using ElektronikChat.Core.Net;
+using ElektronikChat.Net.IO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +17,21 @@ namespace ElektronikChat.ViewModel
         public string Login { get; set; }
         public string Password { get; set; }
         public string PasswordCheck { get; set; }
+
+        private Server _server;
+
+        private RelayCommand RegisterUserCommand { get; set; }
+
+        public RegisterViewModel()
+        {
+            _server = new Server();
+
+            RegisterUserCommand = new RelayCommand(o => _server.RegisterUser("xd"));
+        }
+        public void Register()
+        {
+            string combinedMessage = $"{FirstName};{LastName};{Email};{Login};{Password}";
+            _server.RegisterUser(combinedMessage);
+        }
     }
 }

@@ -129,7 +129,8 @@
                     Click="RegisterButton_Click"
                     BorderBrush="#1468c8"
                     Background="LightBlue"
-                    BorderThickness="2"/>
+                    BorderThickness="2"
+                    Command="{Binding RegisterUserCommand}"/>
         </StackPanel>
 
     </Grid>
