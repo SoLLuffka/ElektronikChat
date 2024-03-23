@@ -7,105 +7,166 @@
              xmlns:viewmodel="clr-namespace:ElektronikChat.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1080">
-    <Grid Background="White">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
-            <RowDefinition/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+
         <!--header-->
         <StackPanel Grid.Row="0"
                     Grid.Column="1">
-            
+
             <TextBlock Text="Czat"
-                       Foreground="Black"
+                       Foreground="White"
+                       FontWeight="Bold"
                        FontSize="30"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Margin="0,10,0,0"/>
         </StackPanel>
-        
+
         <!--Lista kontaktow-->
-        <Border Grid.Row="1"
-                BorderThickness="2,2,0,2"
-                BorderBrush="#1c4a82"
-                Height="570"
-                VerticalAlignment="Top">
-            <StackPanel>
-                <TextBlock Text="Lista Kontaktów"
-                    Foreground="Black"
-                    HorizontalAlignment="Center"
-                    FontSize="22"/>
 
-                <TextBox FontSize="30"
-                         Margin="0,20,0,0"
-                         BorderBrush="Black"
-                         Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+        <Grid Background="#3b3e44"
+              Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
 
-                <Button Width="200"
-                    Height="30"
-                    Content="Rejestracja"
-                    Command="{Binding ConnectToServerCommand}"/>
-                <ListView MinHeight="445"
-                          ItemsSource="{Binding Users}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Username}"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                    
-                </ListView>
+            <Label Content="Kontakty"
+                   VerticalAlignment="Center"
+                   Foreground="White"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   Margin="10,0,0,0"/>
+
+            <ListView ItemsSource="{Binding Users}"
+                      Background="Transparent"
+                      BorderThickness="0"
+                      Grid.Row="1"
+                      ItemContainerStyle="{StaticResource ContactCard}">
+                <!--lokacja ../Theme/ContactCard.xaml-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Username}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackPanel Grid.Row="2"
+                        Background="#2f3237"
+                        Orientation="Horizontal">
+
+                <Border CornerRadius="25"
+                        Width="30" Height="30"
+                        Background="ForestGreen"
+                        Margin="16,0,0,0"/>
+
+                <StackPanel VerticalAlignment="Center">
+                    <Label Content="Username"
+                           Foreground="White"
+                           FontWeight="SemiBold"
+                           Margin="0,-4,0,-4"/>
+                    <Label Content="Custom Status"
+                           Foreground="Gray"
+                           FontWeight="SemiBold"
+                           Margin="0,-8,0,-4"/>
+                </StackPanel>
 
             </StackPanel>
+            
+        </Grid>
 
-            
-            
-        </Border>
-        
-        <!--pole na wyslana wiadomosc-->
-        <ScrollViewer Grid.Row="1"
-                      Grid.Column="1"
-                      VerticalScrollBarVisibility="Auto"
-                      MinHeight="570"
-                      VerticalAlignment="Top">
-            <Border BorderThickness="2,2,2,2"
-                    BorderBrush="#6aa9f0">
-                <ListView
-                    ItemsSource="{Binding Messages}">
-                    
-                </ListView>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+
+            <Border
+                Background="#383c42">
+                <Grid HorizontalAlignment="Stretch"
+                      Margin="8">
+
+                    <Label Content="@Username"
+                           Foreground="White"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Margin="5,0,5,0"
+                           VerticalAlignment="Center"/>
+
+                </Grid>
             </Border>
-        </ScrollViewer>
-        
-        
-        <!--Pole na wpisanie wiadomosci-->
-        <DockPanel Grid.Row="2"
-                   Grid.Column="1">
-            <Button Content="Wyślij z Pliku"
-                    HorizontalAlignment="Right"
-                    Margin="0,0,20,0"/>
-            <Button Content="WYŚLIJ"
-                    Command="{Binding SendMessageCommand}"/>
-            <!--Command="{Binding ConnectToServerCommand}"-->
 
-            <TextBox
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Width="710"
-                BorderThickness="0,0,0,2"
-                BorderBrush="#1468c8"
-                Background="Transparent"
-                Margin="0,0,0,0"
-                FontSize="50"
-                Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}">
-                <!--Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"-->
-            </TextBox>
-        </DockPanel>
-        
+            <!--pole na wyslana wiadomosc-->
+            <ListView ItemsSource="{Binding SelectedContact.Messages}"
+                      Background="Transparent"
+                      BorderThickness="0"
+                      ItemContainerStyle="{StaticResource ChatItems}"
+                      Margin="8,0,0,0"
+                      Grid.Row="1">
+                <!--Theme/ChatItems.xaml-->
+
+            </ListView>
+
+            <!--Pole na wpisanie wiadomosci-->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Row="1"
+                         Height="50"
+                         Text="Message @Username"
+                         Style="{StaticResource MessageBox}"
+                         Grid.ColumnSpan="2"/>
+                <!--Theme/MessageBox.xaml-->
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Grid.Column="1"
+                            Margin="0,0,16,0">
+
+                    <Button Content="+"
+                            Foreground="Gray"
+                            Width="20" Height="20"
+                            Margin="5,5,5,0"
+                            Background="LightGray"
+                            BorderThickness="0">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="25"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                    <Button Content=">"
+                            Width="20" Height="20"
+                            Foreground="Gray"
+                            Margin="5,5,5,0"
+                            Background="LightGray"
+                            BorderThickness="0">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="25"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+
+
     </Grid>
 </UserControl>

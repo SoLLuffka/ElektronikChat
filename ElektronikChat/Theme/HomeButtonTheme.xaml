@@ -1,12 +1,14 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿ <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style BasedOn="{StaticResource {x:Type ToggleButton}}" 
            TargetType="{x:Type RadioButton}"
-           x:Key="HomeButtonTheme"> <!--odwołanie do obiektu stylowanego (radiobutton)-->
+           x:Key="HomeButtonTheme">
+        <!--odwołanie do obiektu stylowanego (radiobutton)-->
         <Style.Setters>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="RadioButton"> <!--szablon dla przyciskow-->
+                    <ControlTemplate TargetType="RadioButton">
+                        <!--szablon dla przyciskow-->
                         <Grid VerticalAlignment="Stretch"
                               HorizontalAlignment="Stretch"
                               Background="{TemplateBinding Background}">
@@ -26,9 +28,10 @@
             <Setter Property="BorderThickness" Value="0"/>
         </Style.Setters>
 
-        <Style.Triggers> <!--szablon dla przyciskow po nacisnieciu-->
+        <Style.Triggers>
+            <!--szablon dla przyciskow po nacisnieciu-->
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#1c4a82"/>
+                <Setter Property="Background" Value="#242529"/>
             </Trigger>
         </Style.Triggers>
     </Style>

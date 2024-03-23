@@ -6,26 +6,22 @@
         xmlns:local="clr-namespace:ElektronikChat"
         xmlns:viewModel="clr-namespace:ElektronikChat.ViewModel"
         mc:Ignorable="d"
-        MinWidth="500" MinHeight="600"
+        MinWidth="800" MinHeight="500"
         Width="1080" Height="800"
         Title="Elektronik-Czat"
-        ResizeMode="CanResizeWithGrip">
+        Background="#36393F"
+        ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
 
     <Border>
-        <Border.Background> <!---gradient tla-->
-            <RadialGradientBrush GradientOrigin="1,0" Center="0.6,0.5">
-                <GradientStop Color="#abcff7" Offset="0.1"/>
-                <GradientStop Color="#6ba0f5" Offset="0.4"/>
-                <GradientStop Color="#1b69d0" Offset="1.2"/>
-            </RadialGradientBrush>
-        </Border.Background>
 
-        <Grid> <!--struktura strony / tak jak w html sekcje headery itp-->
-           
+        <Grid>
+            <!--struktura strony / tak jak w html sekcje headery itp-->
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition/>
@@ -70,7 +66,7 @@
                     Margin="0,220,0,0"
                     Command="{Binding OptionsViewCommand}">
                 </RadioButton>
-                    
+
                 <RadioButton Content="Login"
                     Height="80"
                     FontSize="20"

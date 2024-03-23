@@ -7,9 +7,14 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <!---Podpięcie stylu do strony -->
+            
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Theme/HomeButtonTheme.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Theme/HomeButtonTheme.xaml"></ResourceDictionary><!---styl do radiobutton'ow na pasku menu-->
+                <ResourceDictionary Source="Theme/ContactCard.xaml"></ResourceDictionary><!---styl do ikonek uzytkownikow na liscie na czacie-->
+                <ResourceDictionary Source="Theme/ChatItems.xaml"></ResourceDictionary><!--styl do wyswietlanych wiadomosci-->
+                <ResourceDictionary Source="Theme/MessageBox.xaml"></ResourceDictionary><!--styl boxa na wiadomosc-->
+                
+
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
@@ -33,7 +38,7 @@
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:OptionsViewModel}">
-                <!--widok czatu-->
+                <!--widok opcji-->
                 <view:OptionsView/>
             </DataTemplate>
 
