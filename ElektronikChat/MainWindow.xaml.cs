@@ -18,7 +18,6 @@ namespace ElektronikChat
     public partial class MainWindow : Window
     {
         private DBConnection dbConnection;
-        private Core.Register register;
 
         public MainWindow()
         {
@@ -26,7 +25,6 @@ namespace ElektronikChat
             dbConnection = new DBConnection();
             dbConnection.InitializeDatabase();
             ExecuteSelectQuery(); // Dodaj to wywołanie metody tutaj
-            register = new Core.Register();
         }
 
         private void ExecuteSelectQuery()

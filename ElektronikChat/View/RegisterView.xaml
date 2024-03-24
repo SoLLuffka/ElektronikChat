@@ -46,7 +46,8 @@
                          BorderThickness="0,0,0,2"
                          BorderBrush="#242529"
                          Background="Transparent"
-                         VerticalContentAlignment="Center"/>
+                         VerticalContentAlignment="Center"
+                         Text="{Binding FirstName}"/>
             </DockPanel>
 
             <DockPanel Margin="0,20,0,0">
@@ -62,7 +63,8 @@
                          BorderThickness="0,0,0,2"
                          BorderBrush="#242529"
                          Background="Transparent"
-                         VerticalContentAlignment="Center"/>
+                         VerticalContentAlignment="Center"
+                         Text="{Binding LastName}"/>
                     </DockPanel>
 
             <DockPanel Margin="0,20,0,0">
@@ -78,7 +80,8 @@
                      BorderThickness="0,0,0,2"
                      BorderBrush="#242529"
                      Background="Transparent"
-                     VerticalContentAlignment="Center"/>
+                     VerticalContentAlignment="Center"
+                     Text="{Binding Email}"/>
             </DockPanel>
 
             <DockPanel Margin="0,20,0,0">
@@ -94,7 +97,8 @@
                      BorderThickness="0,0,0,2"
                      BorderBrush="#242529"
                      Background="Transparent"
-                     VerticalContentAlignment="Center"/>
+                     VerticalContentAlignment="Center"
+                     Text="{Binding Login}"/>
             </DockPanel>
 
             <DockPanel Margin="0,20,0,0">
@@ -104,13 +108,14 @@
                      FontSize="30"
                      Margin="97,0,0,0"/>
 
-                <PasswordBox x:Name="password"
+                <TextBox x:Name="password"
                      FontSize="30"
                      FontWeight="Bold"
                      BorderThickness="0,0,0,2"
                      BorderBrush="#242529"
                      Background="Transparent"
-                     VerticalContentAlignment="Center"/>
+                     VerticalContentAlignment="Center"
+                     Text="{Binding Password}"/>
             </DockPanel>
 
             <DockPanel Margin="0,20,0,0">
@@ -120,13 +125,14 @@
                      FontSize="30"
                      Margin="-20,0,0,0"/>
 
-                <PasswordBox x:Name="password_check"
+                <TextBox x:Name="password_check"
                      FontSize="30"
                      FontWeight="Bold"
                      BorderThickness="0,0,0,2"
                      BorderBrush="#242529"
                      Background="Transparent"
-                     VerticalContentAlignment="Center"/>
+                     VerticalContentAlignment="Center"
+                     Text="{Binding PasswordCheck}"/>
             </DockPanel>
 
             <Button Margin="0,40,0,0"
@@ -137,7 +143,8 @@
                     FontWeight="SemiBold"
                     Click="RegisterButton_Click"
                     Background="#3a3b41"
-                    Foreground="White"/>
+                    Foreground="White"
+                    Command="{Binding RegisterCommand}"/>
         </StackPanel>
 
     </Grid>

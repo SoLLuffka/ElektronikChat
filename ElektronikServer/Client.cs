@@ -30,7 +30,7 @@ namespace ElektronikServer
             Task.Run(() => Process());
         }
 
-        void Process()
+        async void Process()
         {
             while (true)
             {
@@ -46,7 +46,12 @@ namespace ElektronikServer
                             break;
                         case 20:
                             var regData = _packetReader.ReadMessage();
-                            Console.WriteLine("Registration Data Received: " + regData);
+                            var parts = regData.Split(';');
+                            if (parts.Length == 5)
+                            {
+                                Console.WriteLine("XD");
+                                var success = await DBManager.RegisterUserAsync(parts[0], parts[1], parts[2], parts[3], parts[4]);
+                            }
                             break;
                         default:
                             break;

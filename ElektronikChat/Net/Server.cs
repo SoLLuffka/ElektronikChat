@@ -17,6 +17,7 @@ namespace ElektronikChat.Core.Net
         public event Action connectedEvent;
         public event Action msgReceivedEvent;
         public event Action userDisconnectedEvent;
+        public event Action userRegistered;
 
         public Server()
         {
@@ -60,6 +61,9 @@ namespace ElektronikChat.Core.Net
                         case 10:
                             userDisconnectedEvent?.Invoke();
                             break;
+                        case 20:
+                            userRegistered?.Invoke();
+                            break;
                         default:
                             Console.WriteLine("ah yes..");
                             break;
@@ -67,7 +71,6 @@ namespace ElektronikChat.Core.Net
                 }
             });
         }
-
         public void SendMessageToServer(string message)
         {
             var messagePacket = new PacketBuilder();
@@ -78,6 +81,8 @@ namespace ElektronikChat.Core.Net
 
         public void RegisterUser(string message)
         {
+            _client.Connect("127.0.0.1", 22000);
+            PacketReader = new PacketReader(_client.GetStream());
             var messagePacket = new PacketBuilder();
             messagePacket.WriteOpCode(20);
             messagePacket.WriteMessage(message);
