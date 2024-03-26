@@ -25,7 +25,7 @@ namespace ElektronikServer
             var opcode = _packetReader.ReadByte();
             Username = _packetReader.ReadMessage();
 
-            Console.WriteLine($"[{DateTime.Now}]:{Username} has connected");
+            Console.WriteLine($"[{DateTime.Now}]:{UID} has connected");
 
             Task.Run(() => Process());
         }
@@ -49,7 +49,7 @@ namespace ElektronikServer
                             var parts = regData.Split(';');
                             if (parts.Length == 5)
                             {
-                                Console.WriteLine("XD");
+                                // Console.WriteLine("XD");
                                 var success = await DBManager.RegisterUserAsync(parts[0], parts[1], parts[2], parts[3], parts[4]);
                             }
                             break;
@@ -59,7 +59,7 @@ namespace ElektronikServer
                 }
                 catch (Exception) 
                 {
-                    Console.WriteLine($"[{UID},{Username}]: Disconnected");
+                    Console.WriteLine($"[{UID}]: Disconnected");
                     program.BroadcastDisconnect(UID.ToString());
                     ClientScoket.Close();
                     break;

@@ -31,13 +31,18 @@ namespace ElektronikChat.Core.Net
                 _client.Connect("127.0.0.1", 22000);
                 PacketReader = new PacketReader(_client.GetStream());
 
-                if (!string.IsNullOrEmpty(username))
-                {
-                    var connectPacket = new PacketBuilder();
-                    connectPacket.WriteOpCode(0);
-                    connectPacket.WriteMessage(username);
-                    _client.Client.Send(connectPacket.GetPacketBytes());
-                }
+                var connectPacket = new PacketBuilder();
+                connectPacket.WriteOpCode(0);
+                connectPacket.WriteMessage(username);
+                _client.Client.Send(connectPacket.GetPacketBytes());
+
+                // Now username can be empty, because for us only connection matter
+                // Username will be taken from database with implementation of
+                // logging in system
+                //if (!string.IsNullOrEmpty(username))
+                //{
+
+                //}
                 ReadPackets();
 
             }
@@ -81,7 +86,7 @@ namespace ElektronikChat.Core.Net
 
         public void RegisterUser(string message)
         {
-            _client.Connect("127.0.0.1", 22000);
+            ConnectToServer("");
             PacketReader = new PacketReader(_client.GetStream());
             var messagePacket = new PacketBuilder();
             messagePacket.WriteOpCode(20);
