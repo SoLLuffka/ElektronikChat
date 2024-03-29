@@ -25,12 +25,12 @@ namespace ElektronikServer
             var opcode = _packetReader.ReadByte();
             Username = _packetReader.ReadMessage();
 
-            Console.WriteLine($"[{DateTime.Now}]:{Username} has connected");
+            Console.WriteLine($"[{DateTime.Now}]:{UID} has connected");
 
             Task.Run(() => Process());
         }
 
-        void Process()
+        async void Process()
         {
             while (true)
             {
@@ -46,7 +46,18 @@ namespace ElektronikServer
                             break;
                         case 20:
                             var regData = _packetReader.ReadMessage();
-                            Console.WriteLine("Registration Data Received: " + regData);
+                            var parts = regData.Split(';');
+                            if (parts.Length == 5)
+                            {
+                                Console.WriteLine("Server received regData!");
+                                var success = await DBManager.RegisterUserAsync(parts[0], parts[1], parts[2], parts[3], parts[4]);
+                            }
+                            break;
+                        case 25:
+                            var logData = _packetReader.ReadMessage();
+                            var logParts = logData.Split(';');
+                            var logSuccess = await DBManager.UserExistsAsync(logParts[0], logParts[1]);
+                            Console.WriteLine("Server received logData!");
                             break;
                         default:
                             break;
@@ -54,7 +65,7 @@ namespace ElektronikServer
                 }
                 catch (Exception) 
                 {
-                    Console.WriteLine($"[{UID},{Username}]: Disconnected");
+                    Console.WriteLine($"[{UID}]: Disconnected");
                     program.BroadcastDisconnect(UID.ToString());
                     ClientScoket.Close();
                     break;

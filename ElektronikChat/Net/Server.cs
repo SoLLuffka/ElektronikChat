@@ -1,4 +1,5 @@
 ﻿using ElektronikChat.Net.IO;
+using ElektronikChat.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,9 @@ namespace ElektronikChat.Core.Net
         public event Action connectedEvent;
         public event Action msgReceivedEvent;
         public event Action userDisconnectedEvent;
+        public event Action userRegistered;
+        public event Action userLogged;
+        public event Action userDataMatch;
 
         public Server()
         {
@@ -30,13 +34,18 @@ namespace ElektronikChat.Core.Net
                 _client.Connect("127.0.0.1", 22000);
                 PacketReader = new PacketReader(_client.GetStream());
 
-                if (!string.IsNullOrEmpty(username))
-                {
-                    var connectPacket = new PacketBuilder();
-                    connectPacket.WriteOpCode(0);
-                    connectPacket.WriteMessage(username);
-                    _client.Client.Send(connectPacket.GetPacketBytes());
-                }
+                var connectPacket = new PacketBuilder();
+                connectPacket.WriteOpCode(0);
+                connectPacket.WriteMessage(username);
+                _client.Client.Send(connectPacket.GetPacketBytes());
+
+                // Now username can be empty, because for us only connection matter
+                // Username will be taken from database with implementation of
+                // logging in system
+                //if (!string.IsNullOrEmpty(username))
+                //{
+
+                //}
                 ReadPackets();
 
             }
@@ -60,6 +69,22 @@ namespace ElektronikChat.Core.Net
                         case 10:
                             userDisconnectedEvent?.Invoke();
                             break;
+                        case 20:
+                            userRegistered?.Invoke();
+                            break;
+                        case 25:
+                            userLogged?.Invoke();
+                            break;
+                        case 30:
+                            userDataMatch?.Invoke();
+                            if(PacketReader.ReadBoolean() == true)
+                            {
+                                LoginViewModel.ProccessData(true);
+                            } else
+                            {
+                                LoginViewModel.ProccessData(false);
+                            }
+                            break;
                         default:
                             Console.WriteLine("ah yes..");
                             break;
@@ -67,7 +92,6 @@ namespace ElektronikChat.Core.Net
                 }
             });
         }
-
         public void SendMessageToServer(string message)
         {
             var messagePacket = new PacketBuilder();
@@ -78,8 +102,20 @@ namespace ElektronikChat.Core.Net
 
         public void RegisterUser(string message)
         {
+            ConnectToServer("");
+            PacketReader = new PacketReader(_client.GetStream());
             var messagePacket = new PacketBuilder();
             messagePacket.WriteOpCode(20);
+            messagePacket.WriteMessage(message);
+            _client.Client.Send(messagePacket.GetPacketBytes());
+        }
+
+        public void LoginUser(string message)
+        {
+            ConnectToServer("");
+            PacketReader = new PacketReader(_client.GetStream());
+            var messagePacket = new PacketBuilder();
+            messagePacket.WriteOpCode(25);
             messagePacket.WriteMessage(message);
             _client.Client.Send(messagePacket.GetPacketBytes());
         }
