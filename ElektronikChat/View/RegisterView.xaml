@@ -82,7 +82,7 @@
                         <ColumnDefinition Width="0.5*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <!--imie-->
+                    <!--nazwisko-->
                     <TextBlock Text="Nazwisko: "
                            Grid.Column="0"
                            Foreground="White"
@@ -111,7 +111,7 @@
                         <ColumnDefinition Width="0.5*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <!--imie-->
+                    <!--E-mail-->
                     <TextBlock Text="E-mail: "
                            Grid.Column="0"
                            Foreground="White"
@@ -140,7 +140,7 @@
                         <ColumnDefinition Width="0.5*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <!--imie-->
+                    <!--Login-->
                     <TextBlock Text="Login: "
                            Grid.Column="0"
                            Foreground="White"
@@ -169,7 +169,7 @@
                         <ColumnDefinition Width="0.5*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <!--imie-->
+                    <!--Haslo-->
                     <TextBlock Text="Hasło: "
                            Grid.Column="0"
                            Foreground="White"
@@ -198,7 +198,7 @@
                         <ColumnDefinition Width="0.5*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <!--imie-->
+                    <!--Haslo powtorz-->
                     <TextBlock Text="Powtórz Hasło: "
                            Grid.Column="0"
                            Foreground="White"
@@ -224,7 +224,7 @@
 
                 <Grid Grid.Row="6">
                     <Button 
-                        Width="240"
+                        Width="220"
                         Height="50"
                         Content="Zarejestruj się"
                         FontSize="25"
@@ -233,7 +233,8 @@
                         Background="#414a4c"
                         Foreground="White"
                         VerticalAlignment="Center"
-                        HorizontalAlignment="Right"/>
+                        HorizontalAlignment="Center"
+                        Margin="100,0,0,0"/>
                 </Grid>
 
             </Grid>

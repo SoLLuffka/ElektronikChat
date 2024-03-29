@@ -7,7 +7,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            
+            <!--THEMES-->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/HomeButtonTheme.xaml"></ResourceDictionary><!---styl do radiobutton'ow na pasku menu-->
                 <ResourceDictionary Source="Theme/ContactCard.xaml"></ResourceDictionary><!---styl do ikonek uzytkownikow na liscie na czacie-->
@@ -17,6 +17,7 @@
 
             </ResourceDictionary.MergedDictionaries>
 
+            <!--VIEWS-->
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <!---widok menu glownego-->
                 <view:HomeView/>
@@ -38,8 +39,18 @@
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:OptionsViewModel}">
-                <!--widok opcji-->
+                <!--widok credits'ow-->
                 <view:OptionsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:FlashCardsViewModel}">
+                <!--widok fiszek-->
+                <view:FlashCardsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:SchoolViewModel}">
+                <!--widok szkolny-->
+                <view:SchoolView/>
             </DataTemplate>
 
         </ResourceDictionary>

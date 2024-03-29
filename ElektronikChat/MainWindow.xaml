@@ -71,12 +71,14 @@
                 <RadioButton Content="Fiszki"
                     Grid.Row="2"
                     FontSize="20"
-                    Style="{StaticResource HomeButtonTheme}"/>
+                    Style="{StaticResource HomeButtonTheme}"
+                    Command="{Binding FlashCardsViewCommand}"/>
 
                 <RadioButton Content="Szkoła"
                     Grid.Row="3"
                     FontSize="20"
-                    Style="{StaticResource HomeButtonTheme}"/>
+                    Style="{StaticResource HomeButtonTheme}"
+                    Command="{Binding SchoolViewCommand}"/>
 
                 <RadioButton Content="Autorzy"
                     Grid.Row="6"

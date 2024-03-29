@@ -19,6 +19,8 @@ namespace ElektronikChat.ViewModel
         public RelayCommand RegisterViewCommand { get; set; }
         public RelayCommand TextChatViewCommand { get; set; }
         public RelayCommand OptionsViewCommand { get; set; }
+        public RelayCommand FlashCardsViewCommand { get; set; }
+        public RelayCommand SchoolViewCommand { get; set; }
 
         //dostepne widoki
         public HomeViewModel HomeVM { get; set; }
@@ -26,6 +28,9 @@ namespace ElektronikChat.ViewModel
         public RegisterViewModel RegisterVM { get; set; }
         public TextChatVIewModel TextChatVM { get; set; }
         public OptionsViewModel OptionsVM { get; set; }
+        public FlashCardsViewModel FlashCardsVM { get; set; }
+        public SchoolViewModel SchoolVM { get; set; }
+
 
         private object _currentView;
 
@@ -50,6 +55,8 @@ namespace ElektronikChat.ViewModel
             RegisterVM = new RegisterViewModel();
             TextChatVM = new TextChatVIewModel();
             OptionsVM = new OptionsViewModel();
+            FlashCardsVM = new FlashCardsViewModel();
+            SchoolVM = new SchoolViewModel();
 
             CurrentView = RegisterVM;//domyslny widok po uruchomieniu aplikacji
 
@@ -72,6 +79,14 @@ namespace ElektronikChat.ViewModel
             OptionsViewCommand = new RelayCommand(o =>
             {
                 CurrentView = OptionsVM;
+            });
+            FlashCardsViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = FlashCardsVM;
+            });
+            SchoolViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = SchoolVM;
             });
 
             // metody i zmienne czatu

@@ -23,37 +23,26 @@
 
         <!--header-->
         <StackPanel Grid.Row="0">
-            <TextBlock Text="Autorzy"
-                       Grid.Row="0"
-                       Foreground="White"
-                        FontSize="30"
-                        FontWeight="Bold"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Margin="0,20,0,0"/>
+            <TextBlock Text="Aplikacja Wykonana Przez:"
+                   Foreground="White"
+                   FontSize="30"
+                   FontWeight="Bold"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                       Margin="0,20,0,0"/>
         </StackPanel>
 
         <!--lista autorow-->
-        <Grid Grid.Row="1" Margin="160,50,160,70">
+        <Grid Grid.Row="1" Margin="160,50,160,70"
+              Background="#414a4c">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.25*"/>
-                <RowDefinition Height="0.2*"/>
-                <RowDefinition Height="0.2*"/>
-                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.3*"/>
             </Grid.RowDefinitions>
-                
-            <!--pre-->
-            <Grid Grid.Row="0">
-                <TextBlock Text="Aplikacja Wykonana Przez:"
-                           Foreground="White"
-                           FontSize="30"
-                           FontWeight="Bold"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"/>
-            </Grid>
-                
+                  
             <!--sigan-->
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.6*"/>
                     <RowDefinition Height="0.4*"/>
@@ -67,14 +56,58 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"/>
 
-                <TextBlock Text="BackEnd (baza danych i powiązanie z aplikacją)"
+                <TextBlock Text="BackEnd (baza danych i powiązanie z aplikacją, ogarnięcie github'a)"
                            Grid.Row="1"
                            Foreground="White"
                            FontSize="20"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"/>
             </Grid>
-            
+            <!--hyxer-->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.6*"/>
+                    <RowDefinition Height="0.4*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Kamil Ruszała"
+               Grid.Row="0"
+               Foreground="White"
+               FontSize="30"
+               FontWeight="Bold"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"/>
+
+                <TextBlock Text="BackEnd (Serwer, logika czatu)"
+               Grid.Row="1"
+               Foreground="White"
+               FontSize="20"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"/>
+            </Grid>
+            <!--frikil-->
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.6*"/>
+                    <RowDefinition Height="0.4*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Miłosz Jakubowski"
+               Grid.Row="0"
+               Foreground="White"
+               FontSize="30"
+               FontWeight="Bold"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"/>
+
+                <TextBlock Text="FrontEnd (Ostylowanie Aplikacji)"
+               Grid.Row="1"
+               Foreground="White"
+               FontSize="20"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"/>
+            </Grid>
+
         </Grid>
 
     </Grid>
