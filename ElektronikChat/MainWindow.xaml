@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:ElektronikChat"
         xmlns:viewModel="clr-namespace:ElektronikChat.ViewModel"
         mc:Ignorable="d"
-        MinWidth="800" MinHeight="500"
+        MinWidth="840" MinHeight="660"
         Width="1080" Height="800"
         Title="Elektronik-Czat"
-        Background="#36393F"
+        Background="#353839"
         ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen">
 
@@ -23,70 +23,80 @@
             <!--struktura strony / tak jak w html sekcje headery itp-->
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="120"/> <!--lista nawigacji-->
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
+                <RowDefinition Height="20"/> <!--custom headbar (soon)-->
                 <RowDefinition/>
-                <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
+            
+            <!--headbar-->
+            <Grid Grid.Row="0" Grid.Column="0"
+                  Background="Black"
+                  Grid.ColumnSpan="2">
+                <TextBlock Text="headbar placeholder"
+                           Foreground="White"
+                           HorizontalAlignment="Right"/>
+            </Grid>
 
-
-            <StackPanel Grid.Row="0" Grid.Column="0">
+            <!--lista widokow-->
+            <Grid Grid.Row="1" Grid.Column="0"
+                  Background="#414a4c">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <!--jak tworzysz nowy widok to: zrob ViewModel, podlacz do app.xaml, zrob usercontrol i kolejna komende w MainViewModel-->
-
                 <RadioButton Content="Home"
-                    Height="80"
+                    Grid.Row="0"
                     FontSize="20"
                     Style="{StaticResource HomeButtonTheme}"
                     IsChecked="True"
                     Command="{Binding HomeViewCommand}"/>
 
                 <RadioButton Content="Chat"
-                    Height="80"
+                    Grid.Row="1"
                     FontSize="20"
                     Style="{StaticResource HomeButtonTheme}"
                     Command="{Binding TextChatViewCommand}"/>
 
                 <RadioButton Content="Fiszki"
-                    Height="80"
+                    Grid.Row="2"
                     FontSize="20"
                     Style="{StaticResource HomeButtonTheme}"/>
 
                 <RadioButton Content="Szkoła"
-                    Height="80"
+                    Grid.Row="3"
                     FontSize="20"
                     Style="{StaticResource HomeButtonTheme}"/>
 
-                <RadioButton Content="Opcje"
-                    Height="80"
+                <RadioButton Content="Autorzy"
+                    Grid.Row="6"
                     FontSize="20"
                     Style="{StaticResource HomeButtonTheme}"
-                    Margin="0,220,0,0"
                     Command="{Binding OptionsViewCommand}">
                 </RadioButton>
 
                 <RadioButton Content="Login"
-                    Height="80"
+                    Grid.Row="7"
                     FontSize="20"
                     Style="{StaticResource HomeButtonTheme}"
                     Command="{Binding LoginViewCommand}"/>
-
-            </StackPanel>
-
-            <ContentControl Grid.Row="0"
+       
+            </Grid>
+            <!--wybrany widok-->
+            <ContentControl Grid.Row="1"
                             Grid.Column="1"
                             Content="{Binding CurrentView}"
                             x:Name="MainContent"/>
-
-            <StackPanel Grid.Row="1" Grid.Column="1">
-                <TextBlock Text="Made By: Miłosz Jakubowski, Kamil Ruszała, Kamil Tereszkiewicz"
-                    Foreground="Gray"
-                    FontSize="15"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Right"/>
-            </StackPanel>
 
         </Grid>
 
