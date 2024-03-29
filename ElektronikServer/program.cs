@@ -1,6 +1,9 @@
 ﻿using ElektronikServer.Net.IO;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Data.SQLite;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -11,6 +14,7 @@ namespace ElektronikServer
 {
    class program
     {
+        //public static DBConnection dbConnection;
         static List<Client> _users;
         static TcpListener _listener;
         static void Main(string[] args)
@@ -18,6 +22,10 @@ namespace ElektronikServer
             _users = new List<Client>();
             _listener = new TcpListener(IPAddress.Parse("127.0.0.1"), 22000);
             _listener.Start();
+
+            //dbConnection = new DBConnection();
+            //dbConnection.InitializeDatabase();
+            //ExecuteSelectQuery();
 
             while (true)
             {
@@ -69,5 +77,32 @@ namespace ElektronikServer
             }
             BroadcastMessage($"[{disconnectedUser.Username}] Disconnected!");
         }
+
+        /*
+        public static void ExecuteSelectQuery()
+        {
+            string sql = "SELECT * FROM Users";
+            using (var command = new SQLiteCommand(sql, dbConnection.GetConnection()))
+            {
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    if (!reader.HasRows)
+                    {
+                        Console.WriteLine("Brak danych w tabeli Users.");
+                        return;
+                    }
+
+                    while (reader.Read())
+                    {
+                        // Przetwarzaj wyniki, np.:
+                        string id = reader["idUsers"].ToString();
+                        string firstname = reader["firstname"].ToString();
+                        string lastname = reader["lastname"].ToString();
+                        Console.WriteLine($"{firstname} {lastname} {id}"); // Wyświetl wyniki w MessageBox
+                                                                         // I tak dalej dla innych kolumn...
+                    }
+                }
+            }
+        }*/
     }
 }

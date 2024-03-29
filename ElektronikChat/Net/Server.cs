@@ -1,4 +1,5 @@
 ﻿using ElektronikChat.Net.IO;
+using ElektronikChat.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace ElektronikChat.Core.Net
         public event Action msgReceivedEvent;
         public event Action userDisconnectedEvent;
         public event Action userRegistered;
+        public event Action userLogged;
+        public event Action userDataMatch;
 
         public Server()
         {
@@ -69,6 +72,19 @@ namespace ElektronikChat.Core.Net
                         case 20:
                             userRegistered?.Invoke();
                             break;
+                        case 25:
+                            userLogged?.Invoke();
+                            break;
+                        case 30:
+                            userDataMatch?.Invoke();
+                            if(PacketReader.ReadBoolean() == true)
+                            {
+                                LoginViewModel.ProccessData(true);
+                            } else
+                            {
+                                LoginViewModel.ProccessData(false);
+                            }
+                            break;
                         default:
                             Console.WriteLine("ah yes..");
                             break;
@@ -90,6 +106,16 @@ namespace ElektronikChat.Core.Net
             PacketReader = new PacketReader(_client.GetStream());
             var messagePacket = new PacketBuilder();
             messagePacket.WriteOpCode(20);
+            messagePacket.WriteMessage(message);
+            _client.Client.Send(messagePacket.GetPacketBytes());
+        }
+
+        public void LoginUser(string message)
+        {
+            ConnectToServer("");
+            PacketReader = new PacketReader(_client.GetStream());
+            var messagePacket = new PacketBuilder();
+            messagePacket.WriteOpCode(25);
             messagePacket.WriteMessage(message);
             _client.Client.Send(messagePacket.GetPacketBytes());
         }

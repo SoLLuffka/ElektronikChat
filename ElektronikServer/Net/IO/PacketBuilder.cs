@@ -27,6 +27,11 @@ namespace ElektronikServer.Net.IO
             _ms.Write(msgBytes);
         }
 
+        public void WriteBoolean(bool value)
+        {
+            _ms.WriteByte(value ? (byte)1 : (byte)0);
+        }
+
         public byte[] GetPacketBytes()
         {
             return _ms.ToArray();

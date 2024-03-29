@@ -43,20 +43,22 @@
                          BorderThickness="0,0,0,2"
                          BorderBrush="#242529"
                          Background="Transparent"
-                         VerticalContentAlignment="Center"/>
+                         VerticalContentAlignment="Center"
+                         Text="{Binding Login}"/>
             </DockPanel>
             <DockPanel Margin="0,60,0,60">
                 <TextBlock Text="Hasło: "
                        Foreground="White"
                        FontSize="40"
                        Margin="0,0,20,0"/>
-                <PasswordBox
+                <TextBox
                          FontSize="40"
                          FontWeight="Bold"
                          BorderThickness="0,0,0,2"
                          BorderBrush="#242529"
                          Background="Transparent"
-                         VerticalContentAlignment="Center"/>
+                         VerticalContentAlignment="Center"
+                         Text="{Binding Password}"/>
             </DockPanel>
 
             <Button
@@ -68,7 +70,8 @@
                     FontWeight="SemiBold"
                     Margin="0,0,0,40"
                     Background="#3a3b41"
-                    Foreground="White"/>
+                    Foreground="White"
+                    Command="{Binding LoginCommand}"/>
 
             <DockPanel>
                 <TextBlock  Margin="20,0,0,0"

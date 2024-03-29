@@ -25,15 +25,12 @@ namespace ElektronikChat.View
         public LoginView()
         {
             InitializeComponent();
+            this.DataContext = new LoginViewModel();
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            var mainViewModel = Application.Current.MainWindow.DataContext as MainViewModel;
-            if (mainViewModel != null)
-            {
-                mainViewModel.CurrentView = mainViewModel.HomeVM;
-            }
+            
         }
 
         private void RegButton_Click(Object sender, RoutedEventArgs e)

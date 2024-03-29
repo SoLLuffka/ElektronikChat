@@ -49,9 +49,15 @@ namespace ElektronikServer
                             var parts = regData.Split(';');
                             if (parts.Length == 5)
                             {
-                                // Console.WriteLine("XD");
+                                Console.WriteLine("Server received regData!");
                                 var success = await DBManager.RegisterUserAsync(parts[0], parts[1], parts[2], parts[3], parts[4]);
                             }
+                            break;
+                        case 25:
+                            var logData = _packetReader.ReadMessage();
+                            var logParts = logData.Split(';');
+                            var logSuccess = await DBManager.UserExistsAsync(logParts[0], logParts[1]);
+                            Console.WriteLine("Server received logData!");
                             break;
                         default:
                             break;

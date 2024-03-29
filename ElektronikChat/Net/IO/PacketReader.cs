@@ -27,5 +27,10 @@ namespace ElektronikChat.Net.IO
             var msg = Encoding.UTF8.GetString(msgBffer);
             return msg;
         }
+
+        public bool ReadBoolean()
+        {
+            return _ns.ReadByte() != 0;
+        }
     }
 }

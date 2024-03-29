@@ -24,33 +24,6 @@ namespace ElektronikChat
             InitializeComponent();
             dbConnection = new DBConnection();
             dbConnection.InitializeDatabase();
-            ExecuteSelectQuery(); // Dodaj to wywołanie metody tutaj
-        }
-
-        private void ExecuteSelectQuery()
-        {
-            string sql = "SELECT * FROM Users";
-            using (var command = new SQLiteCommand(sql, dbConnection.GetConnection()))
-            {
-                using (SQLiteDataReader reader = command.ExecuteReader())
-                {
-                    if (!reader.HasRows)
-                    {
-                        MessageBox.Show("Brak danych w tabeli Users.");
-                        return;
-                    }
-
-                    while (reader.Read())
-                    {
-                        // Przetwarzaj wyniki, np.:
-                        string id = reader["idUsers"].ToString();
-                        string firstname = reader["firstname"].ToString();
-                        string lastname = reader["lastname"].ToString();
-                        MessageBox.Show($"{firstname} {lastname} {id}"); // Wyświetl wyniki w MessageBox
-                                                            // I tak dalej dla innych kolumn...
-                    }
-                }
-            }
         }
     }
 }

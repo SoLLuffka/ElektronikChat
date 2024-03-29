@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Threading.Tasks;
+using ElektronikServer.Net.IO;
 
 namespace ElektronikServer
 {
@@ -39,18 +40,35 @@ namespace ElektronikServer
                 }
             }
         }
-        public static async Task<bool> UserExistsAsync(string login)
+        public static async Task<bool> UserExistsAsync(string login, string password)
         {
             using (var conn = new SQLiteConnection(connectionString))
             {
                 await conn.OpenAsync();
-                using (var cmd = new SQLiteCommand($"SELECT COUNT(1) FROM Users WHERE login = @Login", conn))
+                using (var cmd = new SQLiteCommand($"SELECT COUNT(1) FROM Users WHERE login = @Login AND password = @password", conn))
                 {
                     cmd.Parameters.AddWithValue("@Login", login);
+                    cmd.Parameters.AddWithValue("@Password", password);
                     var result = (long)await cmd.ExecuteScalarAsync();
+                    if (result > 0)
+                    {
+                        DataMatch(true);
+                        Console.WriteLine("Login&Password data match");
+                    } else
+                    {
+                        DataMatch(false);
+                        Console.WriteLine("Login&Password data isn't match");
+                    }
                     return result > 0;
                 }
             }
+        }
+
+        public static void DataMatch(bool value)
+        {
+            var msgPacket = new PacketBuilder();
+            msgPacket.WriteOpCode(30);
+            msgPacket.WriteBoolean(value);
         }
     }
 }
