@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -77,6 +78,16 @@ namespace ElektronikServer
             }
             //BroadcastMessage($"[{disconnectedUser.Username}] Disconnected!");
             BroadcastMessage($"[] Disconnected!");
+        }
+
+        public static void DataMatch(bool value, string uid)
+        {
+            var desiredUser = _users.Where(x => x.UID.ToString() == uid).FirstOrDefault();
+
+            var msgPacket = new PacketBuilder();
+            msgPacket.WriteOpCode(30);
+            msgPacket.WriteBoolean(value);
+            desiredUser.ClientScoket.Client?.Send(msgPacket.GetPacketBytes());
         }
 
         /*

@@ -56,7 +56,7 @@ namespace ElektronikServer
                         case 25:
                             var logData = _packetReader.ReadMessage();
                             var logParts = logData.Split(';');
-                            var logSuccess = await DBManager.UserExistsAsync(logParts[0], logParts[1]);
+                            var logSuccess = await DBManager.UserExistsAsync(logParts[0], logParts[1], UID.ToString());
                             Console.WriteLine("Server received logData!");
                             break;
                         default:
