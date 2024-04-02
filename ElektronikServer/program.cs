@@ -45,7 +45,7 @@ namespace ElektronikServer
                 {
                     var broadcastPacket = new PacketBuilder();
                     broadcastPacket.WriteOpCode(1);
-                    broadcastPacket.WriteMessage(usr.Username);
+                    //broadcastPacket.WriteMessage(usr.Username);
                     broadcastPacket.WriteMessage(usr.UID.ToString());
                     user.ClientScoket.Client.Send(broadcastPacket.GetPacketBytes());
                 }
@@ -75,7 +75,8 @@ namespace ElektronikServer
                 broadcastPacket.WriteMessage(uid);
                 user.ClientScoket.Client?.Send(broadcastPacket.GetPacketBytes());
             }
-            BroadcastMessage($"[{disconnectedUser.Username}] Disconnected!");
+            //BroadcastMessage($"[{disconnectedUser.Username}] Disconnected!");
+            BroadcastMessage($"[] Disconnected!");
         }
 
         /*

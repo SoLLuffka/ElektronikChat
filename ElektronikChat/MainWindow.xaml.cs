@@ -1,4 +1,5 @@
 ﻿using ElektronikChat.Core;
+using ElektronikChat.Core.Net;
 using System.Data;
 using System.Data.Common;
 using System.Data.SQLite;
@@ -19,11 +20,16 @@ namespace ElektronikChat
     {
         private DBConnection dbConnection;
 
+        private Server _server;
+
         public MainWindow()
         {
             InitializeComponent();
             dbConnection = new DBConnection();
             dbConnection.InitializeDatabase();
+
+            _server = new Server();
+            _server.ConnectToServer("x");
         }
     }
 }

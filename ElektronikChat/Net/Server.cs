@@ -102,8 +102,8 @@ namespace ElektronikChat.Core.Net
 
         public void RegisterUser(string message)
         {
-            ConnectToServer("");
-            PacketReader = new PacketReader(_client.GetStream());
+            //ConnectToServer("");
+            //PacketReader = new PacketReader(_client.GetStream());
             var messagePacket = new PacketBuilder();
             messagePacket.WriteOpCode(20);
             messagePacket.WriteMessage(message);
@@ -112,8 +112,8 @@ namespace ElektronikChat.Core.Net
 
         public void LoginUser(string message)
         {
-            ConnectToServer("");
-            PacketReader = new PacketReader(_client.GetStream());
+            //ConnectToServer("x");
+            //PacketReader = new PacketReader(_client.GetStream());
             var messagePacket = new PacketBuilder();
             messagePacket.WriteOpCode(25);
             messagePacket.WriteMessage(message);
