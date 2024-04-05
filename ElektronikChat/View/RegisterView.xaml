@@ -74,7 +74,8 @@
                              BorderBrush="#4a4c54"
                              Background="Transparent"
                              VerticalContentAlignment="Center"
-                             TextWrapping="Wrap"/>
+                             TextWrapping="Wrap"
+                             Text="{Binding FirstName}"/>
                 </Grid>
 
                 <Grid Grid.Row="1">
@@ -103,7 +104,8 @@
                          BorderBrush="#4a4c54"
                          Background="Transparent"
                          VerticalContentAlignment="Center"
-                         TextWrapping="Wrap"/>
+                         TextWrapping="Wrap"
+                         Text="{Binding LastName}"/>
                 </Grid>
 
                 <Grid Grid.Row="2">
@@ -132,7 +134,8 @@
                          BorderBrush="#4a4c54"
                          Background="Transparent"
                          VerticalContentAlignment="Center"
-                         TextWrapping="Wrap"/>
+                         TextWrapping="Wrap"
+                         Text="{Binding Email}"/>
                 </Grid>
 
                 <Grid Grid.Row="3">
@@ -161,7 +164,8 @@
                          BorderBrush="#4a4c54"
                          Background="Transparent"
                          VerticalContentAlignment="Center"
-                         TextWrapping="Wrap"/>
+                         TextWrapping="Wrap"
+                         Text="{Binding Login}"/>
                 </Grid>
 
                 <Grid Grid.Row="4">
@@ -190,7 +194,8 @@
                          BorderBrush="#4a4c54"
                          Background="Transparent"
                          VerticalContentAlignment="Center"
-                         TextWrapping="Wrap"/>
+                         TextWrapping="Wrap"
+                         Text="{Binding Password}"/>
                 </Grid>
 
                 <Grid Grid.Row="5">
@@ -219,7 +224,8 @@
                          BorderBrush="#4a4c54"
                          Background="Transparent"
                          VerticalContentAlignment="Center"
-                         TextWrapping="Wrap"/>
+                         TextWrapping="Wrap"
+                         Text="{Binding PasswordCheck}"/>
                 </Grid>
 
                 <Grid Grid.Row="6">
@@ -229,12 +235,13 @@
                         Content="Zarejestruj się"
                         FontSize="25"
                         FontWeight="SemiBold"
-                        Click="RegisterButton_Click"
                         Background="#414a4c"
                         Foreground="White"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
-                        Margin="100,0,0,0"/>
+                        Margin="100,0,0,0"
+                        Click="RegisterButton_Click"
+                        Command="{Binding RegisterCommand}"/>
                 </Grid>
 
             </Grid>
