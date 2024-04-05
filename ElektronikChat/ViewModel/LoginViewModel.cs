@@ -38,7 +38,7 @@ namespace ElektronikChat.ViewModel
 
         public static void ProccessData(bool isLoggedIn)
         {
-            //IsLoggedIn = isLoggedIn;
+            MessageBox.Show(isLoggedIn.ToString());
         }
 
         private void SwitchToHomeView()

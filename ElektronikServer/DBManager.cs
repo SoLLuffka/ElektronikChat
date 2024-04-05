@@ -40,7 +40,7 @@ namespace ElektronikServer
                 }
             }
         }
-        public static async Task<bool> UserExistsAsync(string login, string password)
+        public static async Task<bool> UserExistsAsync(string login, string password, string uid)
         {
             using (var conn = new SQLiteConnection(connectionString))
             {
@@ -52,23 +52,23 @@ namespace ElektronikServer
                     var result = (long)await cmd.ExecuteScalarAsync();
                     if (result > 0)
                     {
-                        DataMatch(true);
+                        program.DataMatch(true, uid);
                         Console.WriteLine("Login&Password data match");
                     } else
                     {
-                        DataMatch(false);
+                        program.DataMatch(false, uid);
                         Console.WriteLine("Login&Password data isn't match");
                     }
                     return result > 0;
                 }
             }
         }
-
+        /*
         public static void DataMatch(bool value)
         {
             var msgPacket = new PacketBuilder();
             msgPacket.WriteOpCode(30);
             msgPacket.WriteBoolean(value);
-        }
+        }*/
     }
 }

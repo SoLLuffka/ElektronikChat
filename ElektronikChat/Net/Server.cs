@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ElektronikChat.Core.Net
 {
@@ -84,6 +85,7 @@ namespace ElektronikChat.Core.Net
                             {
                                 LoginViewModel.ProccessData(false);
                             }
+                            MessageBox.Show(PacketReader.ReadBoolean().ToString());
                             break;
                         default:
                             Console.WriteLine("ah yes..");
@@ -102,8 +104,8 @@ namespace ElektronikChat.Core.Net
 
         public void RegisterUser(string message)
         {
-            ConnectToServer("");
-            PacketReader = new PacketReader(_client.GetStream());
+            //ConnectToServer("");
+            //PacketReader = new PacketReader(_client.GetStream());
             var messagePacket = new PacketBuilder();
             messagePacket.WriteOpCode(20);
             messagePacket.WriteMessage(message);
@@ -112,7 +114,7 @@ namespace ElektronikChat.Core.Net
 
         public void LoginUser(string message)
         {
-            ConnectToServer("");
+            ConnectToServer("x");
             PacketReader = new PacketReader(_client.GetStream());
             var messagePacket = new PacketBuilder();
             messagePacket.WriteOpCode(25);

@@ -10,7 +10,7 @@ namespace ElektronikServer
 {
     internal class Client
     {
-        public string Username { get; set; }
+        //public string Username { get; set; }
         public Guid UID { get; set; }
         public TcpClient ClientScoket { get; set; }
 
@@ -23,7 +23,7 @@ namespace ElektronikServer
             _packetReader = new PacketReader(ClientScoket.GetStream());
 
             var opcode = _packetReader.ReadByte();
-            Username = _packetReader.ReadMessage();
+            var placeholder = _packetReader.ReadMessage();
 
             Console.WriteLine($"[{DateTime.Now}]:{UID} has connected");
 
@@ -41,8 +41,8 @@ namespace ElektronikServer
                     {
                         case 5:
                             var msg = _packetReader.ReadMessage();
-                            Console.WriteLine($"[{DateTime.Now}]: Message received {msg} from {Username}");
-                            program.BroadcastMessage($"[{DateTime.Now}]: [{Username}]: {msg}");
+                            Console.WriteLine($"[{DateTime.Now}]: Message received {msg} from ");
+                            program.BroadcastMessage($"[{DateTime.Now}]: []: {msg}");
                             break;
                         case 20:
                             var regData = _packetReader.ReadMessage();
@@ -56,7 +56,7 @@ namespace ElektronikServer
                         case 25:
                             var logData = _packetReader.ReadMessage();
                             var logParts = logData.Split(';');
-                            var logSuccess = await DBManager.UserExistsAsync(logParts[0], logParts[1]);
+                            var logSuccess = await DBManager.UserExistsAsync(logParts[0], logParts[1], UID.ToString());
                             Console.WriteLine("Server received logData!");
                             break;
                         default:
