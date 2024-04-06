@@ -21,19 +21,26 @@ namespace ElektronikChat.ViewModel
 
         public LoginViewModel()
         {
-            _server = new Server();
+            _server = Server.Instance;
             //LoginCommand = new RelayCommand(o => _server.LoginUser($"{Login};{Password}"));
             /**/
-            LoginCommand = new RelayCommand(o =>
+            LoginCommand = new RelayCommand(async o =>
             {
-                _server.LoginUser($"{Login};{Password}");
-                if(IsLoggedIn == true)
-                {
-                    SwitchToHomeView();
-                } else {
-                    MessageBox.Show("Login error!");
-                }
+                await LoginUserAsync();
             });
+        }
+
+        private async Task LoginUserAsync()
+        {
+            _server.LoginUser($"{Login};{Password}");
+            if (IsLoggedIn == true)
+            {
+                SwitchToHomeView();
+            }
+            else
+            {
+                MessageBox.Show("Login error!");
+            }
         }
 
         public static void ProccessData(bool isLoggedIn)

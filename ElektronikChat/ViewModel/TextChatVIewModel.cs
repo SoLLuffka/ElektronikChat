@@ -28,7 +28,7 @@ namespace ElektronikChat.ViewModel
             Users = new ObservableCollection<UserModel>();
             Messages = new ObservableCollection<string>();  
 
-            _server = new Server();
+            _server = Server.Instance;
             _server.connectedEvent += UserConnected;
             _server.msgReceivedEvent += MessageReceived;
             _server.userDisconnectedEvent += RemoveUser;

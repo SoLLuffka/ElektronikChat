@@ -28,7 +28,7 @@ namespace ElektronikChat.ViewModel
 
         public RegisterViewModel()
         {
-            _server = new Server();
+            _server = Server.Instance;
             RegisterCommand = new RelayCommand(o =>
             {
                 if (ValidateForm())
