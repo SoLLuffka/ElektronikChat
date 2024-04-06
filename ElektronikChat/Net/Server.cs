@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,8 +14,12 @@ namespace ElektronikChat.Core.Net
 {
     class Server
     {
+        private static Server _instance;
+
         TcpClient _client;
         public PacketReader PacketReader;
+
+        public TcpClient Client => _client;
 
         public event Action connectedEvent;
         public event Action msgReceivedEvent;
@@ -26,6 +31,18 @@ namespace ElektronikChat.Core.Net
         public Server()
         {
             _client = new TcpClient();
+        }
+
+        public static Server Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new Server();
+                }
+                return _instance;
+            }
         }
 
         public void ConnectToServer(string username)
@@ -78,14 +95,17 @@ namespace ElektronikChat.Core.Net
                             break;
                         case 30:
                             userDataMatch?.Invoke();
-                            if(PacketReader.ReadBoolean() == true)
+                            bool dataMatch = PacketReader.ReadBoolean();
+
+
+                            if(dataMatch)
                             {
                                 LoginViewModel.ProccessData(true);
                             } else
                             {
                                 LoginViewModel.ProccessData(false);
                             }
-                            MessageBox.Show(PacketReader.ReadBoolean().ToString());
+                            MessageBox.Show(dataMatch.ToString());
                             break;
                         default:
                             Console.WriteLine("ah yes..");
@@ -114,8 +134,8 @@ namespace ElektronikChat.Core.Net
 
         public void LoginUser(string message)
         {
-            ConnectToServer("x");
-            PacketReader = new PacketReader(_client.GetStream());
+            //ConnectToServer("x");
+            //PacketReader = new PacketReader(_client.GetStream());
             var messagePacket = new PacketBuilder();
             messagePacket.WriteOpCode(25);
             messagePacket.WriteMessage(message);
