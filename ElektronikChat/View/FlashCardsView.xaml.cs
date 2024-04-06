@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElektronikChat.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,16 @@ namespace ElektronikChat.View
         public FlashCardsView()
         {
             InitializeComponent();
+            this.DataContext = new LoginViewModel();
+        }
+
+        private void FlashCreateButton_Click(Object sender, RoutedEventArgs e) //zmiana widoku na panel rejestracji
+        {
+            var mainViewModel = Application.Current.MainWindow.DataContext as MainViewModel;
+            if (mainViewModel != null)
+            {
+                mainViewModel.CurrentView = mainViewModel.CreateFlashCardVM;
+            }
         }
     }
 }
