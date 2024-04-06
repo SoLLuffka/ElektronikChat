@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <!--header-->
-        <StackPanel Background="#414a4c">
+        <StackPanel Background="#3b3e44">
             <TextBlock Text="Rejestracja"
                        Grid.Row="0"
                        Foreground="White"
@@ -238,7 +238,7 @@
                         Background="#414a4c"
                         Foreground="White"
                         VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
+                        HorizontalAlignment="Right"
                         Margin="100,0,0,0"
                         Click="RegisterButton_Click"
                         Command="{Binding RegisterCommand}"/>

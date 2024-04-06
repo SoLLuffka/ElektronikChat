@@ -6,13 +6,61 @@
              xmlns:local="clr-namespace:ElektronikChat.View"
              xmlns:viewmodel="clr-namespace:ElektronikChat.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="960">
+             d:DesignHeight="720" d:DesignWidth="960">
     <UserControl.DataContext>
         <viewmodel:MainViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <TextBlock Text="tu beda fiszki"
-                   FontSize="30"
-                   Foreground="White"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="0.9*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <!--header-->
+        <StackPanel Background="#3b3e44">
+            <TextBlock Text="Fiszki"
+               Grid.Row="0"
+               Foreground="White"
+                FontSize="30"
+                FontWeight="Bold"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,20,0,0"/>
+        </StackPanel>
+        
+        <!--flashcards list-->
+        <ScrollViewer Grid.Row="1">
+            <Grid> <!--structure-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="160"/>
+                    <RowDefinition Height="160"/>
+                    <RowDefinition Height="160"/>
+                    <RowDefinition Height="160"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+            
+            
+            </Grid>
+        </ScrollViewer>
+    
+        <!--add new flashcards-->
+        <Grid Grid.Row="2" Background="#3b3e44">
+
+            <Button Height="30" Width="200"
+                    FontSize="16"
+                    FontWeight="SemiBold"
+                    Background="#3a3b41"
+                    Foreground="White"
+                    Content="Dodaj Nowy Zestaw"
+                    HorizontalAlignment="Center"
+                    Command="{Binding CreateFlashCardViewCommand}"/>
+                <!--dodawajcie mi wasze komendy na dole bedzie 
+                    mi milo dzk :)-->
+        </Grid>
+        
     </Grid>
 </UserControl>

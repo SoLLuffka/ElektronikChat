@@ -33,7 +33,7 @@ namespace ElektronikChat.View
             
         }
 
-        private void RegButton_Click(Object sender, RoutedEventArgs e)
+        private void RegButton_Click(Object sender, RoutedEventArgs e) //zmiana widoku na panel rejestracji
         {
             var mainViewModel = Application.Current.MainWindow.DataContext as MainViewModel;
             if (mainViewModel != null)

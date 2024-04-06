@@ -11,7 +11,8 @@
         Title="Elektronik-Czat"
         Background="#353839"
         ResizeMode="CanResizeWithGrip"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"> <!--resizeMode do zmiany na none na koncu projektu-->
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
@@ -28,18 +29,55 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="20"/> <!--custom headbar (soon)-->
+                <RowDefinition Height="26"/> <!--custom headbar (soon)-->
                 <RowDefinition/>
             </Grid.RowDefinitions>
             
             <!--headbar-->
-            <Grid Grid.Row="0" Grid.Column="0"
-                  Background="Black"
-                  Grid.ColumnSpan="2">
-                <TextBlock Text="headbar placeholder"
+            <Border Grid.Row="0" Grid.Column="0"
+                  Background="Gray"
+                  Grid.ColumnSpan="2"
+                  MouseDown="Border_MouseDown">
+
+                <Grid HorizontalAlignment="Stretch">
+                    <Label Content="Elektronik Chat"
                            Foreground="White"
-                           HorizontalAlignment="Right"/>
-            </Grid>
+                           FontSize="11"
+                           FontWeight="SemiBold"/>
+
+                    <StackPanel HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+                        <!--minimize button-->
+                        <Button Width="20" Height="20"
+                            Content="🗕"
+                            FontSize="11"
+                            FontWeight="SemiBold"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Margin="0,0,0,2"
+                            Click="Minimize_Click"/>
+                        <!--scale button-->
+                        <Button Width="20" Height="20"
+                            Content="❏"
+                            FontSize="11"
+                            FontWeight="SemiBold"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Click="Scale_Click"/>
+                        <!--exit button-->
+                        <Button Width="20" Height="20"
+                            Content="✕"
+                            FontSize="11"
+                            FontWeight="SemiBold"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Click="Exit_Click"/>
+
+                    </StackPanel>
+
+                </Grid>
+                
+            </Border>
 
             <!--lista widokow-->
             <Grid Grid.Row="1" Grid.Column="0"

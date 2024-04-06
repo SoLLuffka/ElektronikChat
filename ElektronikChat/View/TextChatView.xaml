@@ -4,36 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ElektronikChat.View"
-             xmlns:viewmodel="clr-namespace:ElektronikChat.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
+             xmlns:viewmodel="clr-namespace:ElektronikChat.ViewModel"
+             d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1080">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!--header-->
-        <StackPanel Grid.Row="0"
-                    Grid.Column="1">
-
-            <TextBlock Text="Czat"
-                       Foreground="White"
-                       FontWeight="Bold"
-                       FontSize="30"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                       Margin="0,10,0,0"/>
-        </StackPanel>
-
         <!--Lista kontaktow-->
 
         <Grid Background="#3b3e44"
-              Grid.Row="1">
+              Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
                 <RowDefinition/>
@@ -74,14 +61,14 @@
                            Foreground="White"
                            FontWeight="SemiBold"
                            Margin="0,-4,0,-4"/>
-                    <Label Content="Custom Status"
+                    <Label Content="Status"
                            Foreground="Gray"
                            FontWeight="SemiBold"
                            Margin="0,-8,0,-4"/>
                 </StackPanel>
 
             </StackPanel>
-            
+
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="1">
@@ -124,11 +111,11 @@
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Grid.Row="1"
+                <TextBox
                          Height="50"
                          Text="Message @Username"
                          Style="{StaticResource MessageBox}"
-                         Grid.ColumnSpan="2"/>
+                         Grid.ColumnSpan="2" Margin="16,10,0,10"/>
                 <!--Theme/MessageBox.xaml-->
 
                 <StackPanel Orientation="Horizontal"

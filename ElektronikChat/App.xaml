@@ -13,7 +13,7 @@
                 <ResourceDictionary Source="Theme/ContactCard.xaml"></ResourceDictionary><!---styl do ikonek uzytkownikow na liscie na czacie-->
                 <ResourceDictionary Source="Theme/ChatItems.xaml"></ResourceDictionary><!--styl do wyswietlanych wiadomosci-->
                 <ResourceDictionary Source="Theme/MessageBox.xaml"></ResourceDictionary><!--styl boxa na wiadomosc-->
-                
+                <ResourceDictionary Source="Theme/NewFlashBox.xaml"></ResourceDictionary><!--styl boxa na informacje w CreateFlashCardView-->
 
             </ResourceDictionary.MergedDictionaries>
 
@@ -46,6 +46,11 @@
             <DataTemplate DataType="{x:Type viewModel:FlashCardsViewModel}">
                 <!--widok fiszek-->
                 <view:FlashCardsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:CreateFlashCardsViewModel}">
+                <!--tworzenie fiszek-->
+                <view:CreateFlashCardView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:SchoolViewModel}">
