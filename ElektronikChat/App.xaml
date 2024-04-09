@@ -14,7 +14,7 @@
                 <ResourceDictionary Source="Theme/ChatItems.xaml"></ResourceDictionary><!--styl do wyswietlanych wiadomosci-->
                 <ResourceDictionary Source="Theme/MessageBox.xaml"></ResourceDictionary><!--styl boxa na wiadomosc-->
                 <ResourceDictionary Source="Theme/NewFlashBox.xaml"></ResourceDictionary><!--styl boxa na informacje w CreateFlashCardView-->
-
+                <!--<ResourceDictionary Source="Theme/FlashCardDemo.xaml"></ResourceDictionary>wyglad fiszki w panelu tworzenia zestawu-->
             </ResourceDictionary.MergedDictionaries>
 
             <!--VIEWS-->
@@ -56,6 +56,11 @@
             <DataTemplate DataType="{x:Type viewModel:SchoolViewModel}">
                 <!--widok szkolny-->
                 <view:SchoolView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:DisconnectViewModel}">
+                <!--widok bledu polaczenia z serwerem-->
+                <view:DisconnectView/>
             </DataTemplate>
 
         </ResourceDictionary>

@@ -9,11 +9,16 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
 
-                    <Border CornerRadius="8"
-                            Background="#3e4147">
+                    <Border Background="#3e4147"
+                            CornerRadius="8">
 
                         <Grid>
-                            
+                            <TextBox Background="Transparent"
+                                VerticalAlignment="Stretch"
+                                HorizontalContentAlignment="Left"
+                                Foreground="White"
+                                BorderThickness="0"
+                                TextWrapping="Wrap"/>
                         </Grid>
                         
                     </Border>

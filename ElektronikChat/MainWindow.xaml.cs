@@ -33,13 +33,32 @@ namespace ElektronikChat
             _server.ConnectToServer("XD");
         }
 
-        private void Border_MouseDown(object sender, MouseEventArgs e) //ruszanie oknem trzymajac headbar'a
+        
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e) //poruszanie oknem poprzez belke gorna
         {
-            if(e.LeftButton == MouseButtonState.Pressed) 
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
-                DragMove();
+                if (WindowState == WindowState.Normal)
+                {
+                    DragMove();
+                }
+                else if (WindowState == WindowState.Maximized && e.GetPosition(this).Y < 40) // 40 to wysokość paska tytułowego
+                {
+                    // Przywróć okno do poprzedniego stanu
+                    if (RestoreBounds.Width > 0 && RestoreBounds.Height > 0)
+                    {
+                        Left = RestoreBounds.Left;
+                        Top = RestoreBounds.Top;
+                        Width = RestoreBounds.Width;
+                        Height = RestoreBounds.Height;
+                    }
+
+                    WindowState = WindowState.Normal;
+                }
             }
         }
+
+
 
         private void Minimize_Click(object sender, RoutedEventArgs e) //minimalizacja okna
         {
@@ -61,6 +80,25 @@ namespace ElektronikChat
         private void Exit_Click(object sender, RoutedEventArgs e) //wylaczenie calej aplikacji
         {
             Application.Current.Shutdown();
+        }
+
+        bool check_width = false;
+        private void MenuDissapear(object sender, RoutedEventArgs e) //znikajace menu po lewej
+        {
+            ColumnDefinition columnDefinition = NavBar;
+
+            if (check_width == false)
+            {
+                
+                columnDefinition.Width = new GridLength(0);
+                check_width = true;
+            }
+            else
+            {
+                
+                columnDefinition.Width = new GridLength(120);
+                check_width = false;
+            }
         }
     }
 }

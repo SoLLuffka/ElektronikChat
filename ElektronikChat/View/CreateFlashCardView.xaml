@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ElektronikChat.View"
              xmlns:viewmodel="clr-namespace:ElektronikChat.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="720" d:DesignWidth="960">
+             d:DesignHeight="720" d:DesignWidth="1080">
     <UserControl.DataContext>
         <viewmodel:MainViewModel/>
     </UserControl.DataContext>
@@ -25,48 +25,181 @@
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" Background="#3b3e44">
-                <Button Width="100"
+            <Grid Grid.Row="0" Background="#2f3237">
+                <Button Width="180"
                         HorizontalAlignment="Right"
-                        Content="Stwórz"
+                        Content="Stwórz nowy zestaw!"
                         FontSize="16"
                         FontWeight="SemiBold"
                         Background="#3a3b41"
                         Foreground="White"/>
             </Grid>
-            
-            <Grid Grid.Row="1">
 
-                <TextBlock Text="Nazwa Zestawu"
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="1"
+                    Text="Nazwa Zestawu"
                     Foreground="White"
                     FontSize="16"
-                    FontWeight="Bold"/>
+                    FontWeight="Bold" Grid.ColumnSpan="2"/>
 
-                <TextBox
+                <TextBox Grid.Column="1"
                         Height="40"
                         VerticalAlignment="Bottom"
-                        Style="{StaticResource NewFlashBox}"/>
+                        VerticalContentAlignment="Center"
+                        Style="{StaticResource NewFlashBox}"
+                        Margin="0,0,0,8"/>
             </Grid>
 
             <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Opis"
+                <TextBlock Grid.Column="1" 
+                   Text="Opis"
                    Foreground="White"
                    FontSize="16"
                    FontWeight="Bold"/>
 
-                <TextBox
+                <TextBox Grid.Column="1"
                         Height="70"
                         VerticalAlignment="Bottom"
-                        Style="{StaticResource NewFlashBox}"/>
+                        VerticalContentAlignment="Top"
+                        Style="{StaticResource NewFlashBox}"
+                        Margin="0,0,0,8"/>
             </Grid>
-            
+
         </Grid>
-        
+
         <!--adding flashcards-->
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto">
             <Grid>
-                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--jedna fiszka placeholder-->
+                <Border Grid.Column="1"
+                        CornerRadius="8"
+                        Height="140"
+                        VerticalAlignment="Top"
+                        Background="#2f3237">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="38"/>
+                            <RowDefinition Height="2"/>
+                            <RowDefinition Height="100"/>
+                        </Grid.RowDefinitions>
+
+                        <!--numer fiszki-->
+                        <TextBlock Grid.Column="0" Grid.Row="0"
+                                Text="1"
+                                Foreground="White"
+                                FontSize="30"
+                                FontWeight="SemiBold"
+                                Margin="16,0,0,0"/>
+                        
+                        <!--przycisk usuniecia fiszki-->
+                        <Button Grid.Column="1" Grid.Row="0"
+                                Content="Usuń Fiszkę"
+                                Background="#2f3237"
+                                Foreground="White"
+                                FontSize="15"
+                                FontWeight="SemiBold"
+                                Width="100"
+                                Height="34"
+                                BorderThickness="0"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,7,0"/>
+                        
+                        <!--"bariera"-->
+                        <Border Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                BorderBrush="#3a3b41"
+                                BorderThickness="1"/>
+                        
+                        <!--pojecie-->
+                        <Grid Grid.Row="2" Grid.Column="0">
+
+                            <TextBox  
+                                    VerticalAlignment="Center"
+                                    Height="40"
+                                    FontSize="20"
+                                    FontWeight="Bold"
+                                    Foreground="White"
+                                    BorderThickness="0,0,0,2"
+                                    BorderBrush="#4a4c54"
+                                    Background="Transparent"
+                                    VerticalContentAlignment="Center"
+                                    TextWrapping="Wrap"
+                                    Margin="10,0,10,15"/>
+
+                            <TextBlock Text="Pojęcie"
+                                       VerticalAlignment="Bottom"
+                                       Foreground="#4a4c54"
+                                       FontSize="20"
+                                       FontWeight="SemiBold"
+                                       Margin="10,0,0,10"/>
+
+                        </Grid>
+
+                        <!--definicja-->
+                        <Grid Grid.Row="2" Grid.Column="1">
+
+                            <TextBox  
+                                    VerticalAlignment="Center"
+                                    Height="40"
+                                    FontSize="20"
+                                    FontWeight="Bold"
+                                    Foreground="White"
+                                    BorderThickness="0,0,0,2"
+                                    BorderBrush="#4a4c54"
+                                    Background="Transparent"
+                                    VerticalContentAlignment="Center"
+                                    TextWrapping="Wrap"
+                                    Margin="10,0,10,15"/>
+
+                            <TextBlock Text="Definicja"
+                                   VerticalAlignment="Bottom"
+                                   Foreground="#4a4c54"
+                                   FontSize="20"
+                                   FontWeight="SemiBold"
+                                   Margin="10,0,0,10"/>
+
+                        </Grid>
+
+                    </Grid>
+                </Border>
+
+                <!--dodaj fiszke-->
+                <Border Grid.Column="1"
+                        CornerRadius="8"
+                        Height="140"
+                        Background="#2f3237">
+                    <Button
+                        Content="+ Dodaj kolejną Fiszkę"
+                        FontSize="30"
+                        FontWeight="Bold"
+                        Background="Transparent"
+                        Foreground="White"
+                        BorderThickness="0"/>
+                </Border>
             </Grid>
         </ScrollViewer>
     </Grid>

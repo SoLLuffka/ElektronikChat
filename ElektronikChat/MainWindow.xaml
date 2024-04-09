@@ -24,8 +24,8 @@
             <!--struktura strony / tak jak w html sekcje headery itp-->
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120"/> <!--lista nawigacji-->
-                <ColumnDefinition/>
+                <ColumnDefinition Width="120" x:Name="NavBar"/> <!--lista nawigacji-->
+                <ColumnDefinition x:Name="ViewColumn"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -44,6 +44,13 @@
                            Foreground="White"
                            FontSize="11"
                            FontWeight="SemiBold"/>
+                    
+                    <!--PLACEHOLDER-->
+                    <Button Content="placeholder znikanie menu"
+                            Foreground="Black"
+                            FontSize="13"
+                            Width="160"
+                            Click="MenuDissapear"/>
 
                     <StackPanel HorizontalAlignment="Right"
                                 Orientation="Horizontal">
@@ -81,7 +88,8 @@
 
             <!--lista widokow-->
             <Grid Grid.Row="1" Grid.Column="0"
-                  Background="#414a4c">
+                  Background="#414a4c"
+                  Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -91,7 +99,13 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                </Grid.RowDefinitions>
+                </Grid.RowDefinitions> <!--e sigan sprawa jest-->
+                <!--<Grid.Triggers>-->
+                <!--<Trigger Property="twoje property" Value="twoje value">-->
+                        <!--<Setter Property="Visibility" value="Collapsed"/>-->
+                    <!--</Trigger>-->
+                <!--</Grid.Triggers>--> 
+                <!--dodatkowo zmienic szerokosc kolumny 0 na wartosc 0-->
                 <!--jak tworzysz nowy widok to: zrob ViewModel, podlacz do app.xaml, zrob usercontrol i kolejna komende w MainViewModel-->
                 <RadioButton Content="Home"
                     Grid.Row="0"
@@ -122,8 +136,7 @@
                     Grid.Row="6"
                     FontSize="20"
                     Style="{StaticResource HomeButtonTheme}"
-                    Command="{Binding OptionsViewCommand}">
-                </RadioButton>
+                    Command="{Binding OptionsViewCommand}"/>
 
                 <RadioButton Content="Login"
                     Grid.Row="7"

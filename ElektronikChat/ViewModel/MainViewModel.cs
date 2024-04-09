@@ -22,6 +22,7 @@ namespace ElektronikChat.ViewModel
         public RelayCommand FlashCardsViewCommand { get; set; }
         public RelayCommand CreateFlashCardViewCommand { get; set; }
         public RelayCommand SchoolViewCommand { get; set; }
+        public RelayCommand DisconnectViewCommand { get; set; }
 
         //dostepne widoki
         public HomeViewModel HomeVM { get; set; }
@@ -32,6 +33,7 @@ namespace ElektronikChat.ViewModel
         public FlashCardsViewModel FlashCardsVM { get; set; }
         public CreateFlashCardsViewModel CreateFlashCardVM { get; set; }
         public SchoolViewModel SchoolVM { get; set; }
+        public DisconnectViewModel DisconnectVM { get; set; }
 
 
         private object _currentView;
@@ -60,6 +62,7 @@ namespace ElektronikChat.ViewModel
             FlashCardsVM = new FlashCardsViewModel();
             CreateFlashCardVM = new CreateFlashCardsViewModel();
             SchoolVM = new SchoolViewModel();
+            DisconnectVM = new DisconnectViewModel();
             
 
             CurrentView = RegisterVM;//domyslny widok po uruchomieniu aplikacji
@@ -95,6 +98,10 @@ namespace ElektronikChat.ViewModel
             SchoolViewCommand = new RelayCommand(o =>
             {
                 CurrentView = SchoolVM;
+            });
+            DisconnectViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = DisconnectVM;
             });
 
             // metody i zmienne czatu
