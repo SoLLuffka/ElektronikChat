@@ -9,6 +9,7 @@ using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Interop;
 
 namespace ElektronikChat.Core.Net
 {
@@ -27,6 +28,9 @@ namespace ElektronikChat.Core.Net
         public event Action userRegistered;
         public event Action userLogged;
         public event Action userDataMatch;
+
+        //public delegate void DataMatchHandler(bool dataMatch);
+        //public event DataMatchHandler DataMatch;
 
         public Server()
         {
@@ -47,10 +51,10 @@ namespace ElektronikChat.Core.Net
 
         public void ConnectToServer(string username)
         {
-            if(!_client.Connected)
+            if (!_client.Connected)
             {
                 _client.Connect("127.0.0.1", 22000);
-                PacketReader = new PacketReader(_client.GetStream());
+
 
                 var connectPacket = new PacketBuilder();
                 connectPacket.WriteOpCode(0);
@@ -65,61 +69,79 @@ namespace ElektronikChat.Core.Net
 
                 //}
                 ReadPackets();
-
             }
         }
 
-        private void ReadPackets()
+        public void ReadPackets()
         {
-            Task.Run(() => 
+            PacketReader = new PacketReader(_client.GetStream());
+            Task.Run(async () =>
             {
-                while (true)
+                try
                 {
-                    var opcode = PacketReader.ReadByte();
-                    switch (opcode)
+                    while (true)
                     {
-                        case 1:
-                            connectedEvent?.Invoke();
-                            break;
-                        case 5:
-                            msgReceivedEvent?.Invoke();
-                            break;
-                        case 10:
-                            userDisconnectedEvent?.Invoke();
-                            break;
-                        case 20:
-                            userRegistered?.Invoke();
-                            break;
-                        case 25:
-                            userLogged?.Invoke();
-                            break;
-                        case 30:
-                            userDataMatch?.Invoke();
-                            bool dataMatch = PacketReader.ReadBoolean();
-
-
-                            if(dataMatch)
-                            {
-                                LoginViewModel.ProccessData(true);
-                            } else
-                            {
-                                LoginViewModel.ProccessData(false);
-                            }
-                            MessageBox.Show(dataMatch.ToString());
-                            break;
-                        default:
-                            Console.WriteLine("ah yes..");
-                            break;
+                        MessageBox.Show("sss");
+                        var opcode = await PacketReader.ReadByteAsync();
+                        MessageBox.Show($"Odebrano pakiet z opcodem: {opcode}");
+                        switch (opcode)
+                        {
+                            case 1:
+                                connectedEvent?.Invoke();
+                                break;
+                            case 5:
+                                msgReceivedEvent?.Invoke();
+                                break;
+                            case 10:
+                                userDisconnectedEvent?.Invoke();
+                                break;
+                            case 20:
+                                userRegistered?.Invoke();
+                                break;
+                            case 25:
+                                userLogged?.Invoke();
+                                break;
+                            case 30:
+                                var dataMatch = PacketReader.ReadBoolean();
+                                HandleDataMatch(dataMatch);
+                                break;
+                            default:
+                                MessageBox.Show("ah yes..");
+                                break;
+                        }
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Wystąpił błąd podczas odczytywania pakietów: {ex.Message}");
                 }
             });
         }
+
+        private void HandleDataMatch(bool dataMatch)
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                MessageBox.Show($"Zgodność danych: {dataMatch}");
+            });
+        }
+
+        public void SignalReadyToServer()
+        {
+            if (_client.Connected)
+            {
+                var readyPacket = new PacketBuilder();
+                readyPacket.WriteOpCode(2); // Przykładowy opcode sygnalizujący gotowość
+                _client.Client.Send(readyPacket.GetPacketBytes());
+            }
+        }
+
         public void SendMessageToServer(string message)
         {
             var messagePacket = new PacketBuilder();
             messagePacket.WriteOpCode(5);
             messagePacket.WriteMessage(message);
-            _client.Client.Send(messagePacket.GetPacketBytes());  
+            _client.Client.Send(messagePacket.GetPacketBytes());
         }
 
         public void RegisterUser(string message)

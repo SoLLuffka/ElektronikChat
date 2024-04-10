@@ -33,13 +33,15 @@ namespace ElektronikChat.ViewModel
         private async Task LoginUserAsync()
         {
             _server.LoginUser($"{Login};{Password}");
+            _server.ReadPackets();
+
             if (IsLoggedIn == true)
             {
                 SwitchToHomeView();
             }
             else
             {
-                MessageBox.Show("Login error!");
+
             }
         }
 

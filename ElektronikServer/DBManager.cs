@@ -14,7 +14,7 @@ namespace ElektronikServer
         private static string dbPath = "ElektronikChatDB.db";
         private static string connectionString = $"Data Source={dbPath};Version=3;";
 
-        public static async Task<bool> RegisterUserAsync(string login, string password, string firstname, string lastname, string email)
+        public static async Task<bool> RegisterUserAsync(string firstname, string lastname, string email, string login, string password)
         {
             using (var conn = new SQLiteConnection(connectionString))
             {
@@ -22,11 +22,13 @@ namespace ElektronikServer
                 using (var cmd = new SQLiteCommand(conn))
                 {
                     cmd.CommandText = "INSERT INTO Users(login, password, firstname, lastname, email) VALUES (@Login, @Password, @FirstName, @LastName, @Email)";
-                    cmd.Parameters.AddWithValue("@Login", login);
-                    cmd.Parameters.AddWithValue("@Password", password); // Make sure to hash this
                     cmd.Parameters.AddWithValue("@FirstName", firstname);
                     cmd.Parameters.AddWithValue("@LastName", lastname);
                     cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Login", login);
+                    cmd.Parameters.AddWithValue("@Password", password); // Make sure to hash this
+
+                    Console.WriteLine($"Rejestrowanie użytkownika. Login: {login}, Hasło: {password}, Imie: {firstname}, Nazwisko: {lastname}, Email: {email}");
                     int result = await cmd.ExecuteNonQueryAsync();
                     if (result > 0)
                     {
@@ -45,7 +47,20 @@ namespace ElektronikServer
             using (var conn = new SQLiteConnection(connectionString))
             {
                 await conn.OpenAsync();
-                using (var cmd = new SQLiteCommand($"SELECT COUNT(1) FROM Users WHERE login = @Login AND password = @password", conn))
+                using (var cmdListUsers = new SQLiteCommand("SELECT login, password FROM Users", conn))
+                {
+                    using (var reader = await cmdListUsers.ExecuteReaderAsync())
+                    {
+                        Console.WriteLine("Wszyscy użytkownicy w bazie danych wraz z hasłami:");
+                        while (await reader.ReadAsync())
+                        {
+                            var loginn = reader.GetString(0); // Pobranie loginu użytkownika
+                            var passwordd = reader.GetString(1); // Pobranie hasła użytkownika
+                            Console.WriteLine($"Login: {loginn}, Hasło: {passwordd}");
+                        }
+                    }
+                }
+                using (var cmd = new SQLiteCommand($"SELECT COUNT(*) FROM Users WHERE trim(login) = trim(@Login)", conn))
                 {
                     cmd.Parameters.AddWithValue("@Login", login);
                     cmd.Parameters.AddWithValue("@Password", password);
@@ -54,7 +69,8 @@ namespace ElektronikServer
                     {
                         program.DataMatch(true, uid);
                         Console.WriteLine("Login&Password data match");
-                    } else
+                    }
+                    else
                     {
                         program.DataMatch(false, uid);
                         Console.WriteLine("Login&Password data isn't match");
@@ -63,8 +79,8 @@ namespace ElektronikServer
                 }
             }
         }
-        /*
-        public static void DataMatch(bool value)
+
+        /*public static void DataMatch(bool value)
         {
             var msgPacket = new PacketBuilder();
             msgPacket.WriteOpCode(30);

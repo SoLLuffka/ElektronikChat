@@ -39,6 +39,16 @@ namespace ElektronikServer
                     var opcode = _packetReader.ReadByte();
                     switch (opcode)
                     {
+                        case 2:
+                            Console.WriteLine($"Klient {UID} jest gotowy do odbioru danych.");
+                            /* to do zmiany nie moze odrazu wysylac tylko po sprawdzeniu danych
+                            var msgPacket = new PacketBuilder();
+                            msgPacket.WriteOpCode(3);
+                            msgPacket.WriteMessage("ElO");
+
+                            var message = msgPacket.GetPacketBytes();
+                            await ClientScoket.GetStream().WriteAsync(message, 0, message.Length);*/
+                            break;
                         case 5:
                             var msg = _packetReader.ReadMessage();
                             Console.WriteLine($"[{DateTime.Now}]: Message received {msg} from ");
@@ -50,6 +60,7 @@ namespace ElektronikServer
                             if (parts.Length == 5)
                             {
                                 Console.WriteLine("Server received regData!");
+                                Console.WriteLine($"Imie: {parts[0]},Nazwisko: {parts[1]},Email: {parts[2]},Login: {parts[3]},Password: {parts[4]}");
                                 var success = await DBManager.RegisterUserAsync(parts[0], parts[1], parts[2], parts[3], parts[4]);
                             }
                             break;
@@ -63,7 +74,7 @@ namespace ElektronikServer
                             break;
                     }
                 }
-                catch (Exception) 
+                catch (Exception)
                 {
                     Console.WriteLine($"[{UID}]: Disconnected");
                     program.BroadcastDisconnect(UID.ToString());

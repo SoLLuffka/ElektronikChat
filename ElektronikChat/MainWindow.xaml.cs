@@ -31,6 +31,7 @@ namespace ElektronikChat
 
             _server = Server.Instance;
             _server.ConnectToServer("XD");
+            _server.SignalReadyToServer();
         }
 
         

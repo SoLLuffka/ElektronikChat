@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace ElektronikServer
 {
-   class program
+    class program
     {
         //public static DBConnection dbConnection;
         static List<Client> _users;
@@ -27,20 +27,20 @@ namespace ElektronikServer
             //dbConnection = new DBConnection();
             //dbConnection.InitializeDatabase();
             //ExecuteSelectQuery();
-
+            BroadcastConnection();
             while (true)
             {
                 var client = new Client(_listener.AcceptTcpClient());
                 _users.Add(client);
 
                 /*Broadcast the connection to everyone on server*/
-                BroadcastConnection();
+
             }
         }
 
         static void BroadcastConnection()
         {
-            foreach (var user in _users) 
+            foreach (var user in _users)
             {
                 foreach (var usr in _users)
                 {
@@ -55,7 +55,7 @@ namespace ElektronikServer
 
         public static void BroadcastMessage(string message)
         {
-            foreach(var user in _users)
+            foreach (var user in _users)
             {
                 var msgPacket = new PacketBuilder();
                 msgPacket.WriteOpCode(5);
@@ -82,12 +82,24 @@ namespace ElektronikServer
 
         public static void DataMatch(bool value, string uid)
         {
-            var desiredUser = _users.Where(x => x.UID.ToString() == uid).FirstOrDefault();
+            var desiredUser = _users.FirstOrDefault(x => x.UID.ToString() == uid);
 
-            var msgPacket = new PacketBuilder();
-            msgPacket.WriteOpCode(30);
-            msgPacket.WriteBoolean(value);
-            desiredUser.ClientScoket.Client?.Send(msgPacket.GetPacketBytes());
+            if (desiredUser != null)
+            {
+                var msgPacket = new PacketBuilder();
+                msgPacket.WriteOpCode(30);
+                msgPacket.WriteBoolean(value);
+
+                desiredUser.ClientScoket.Client.Send(msgPacket.GetPacketBytes());
+
+                Console.WriteLine(msgPacket.GetPacketBytes());
+
+                Console.WriteLine($"Wysłano informację o zgodności danych do klienta o UID: {uid}, wartość: {value}");
+            }
+            else
+            {
+                Console.WriteLine($"Nie znaleziono klienta o UID: {uid}");
+            }
         }
 
         /*
