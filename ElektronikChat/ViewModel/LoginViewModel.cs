@@ -22,6 +22,7 @@ namespace ElektronikChat.ViewModel
         public LoginViewModel()
         {
             _server = Server.Instance;
+            
             //LoginCommand = new RelayCommand(o => _server.LoginUser($"{Login};{Password}"));
             /**/
             LoginCommand = new RelayCommand(async o =>
@@ -34,20 +35,21 @@ namespace ElektronikChat.ViewModel
         {
             _server.LoginUser($"{Login};{Password}");
             _server.ReadPackets();
-
+            _server.DataMatchReceived += DataMatchReceivedHandler;
+            //MessageBox.Show(IsLoggedIn.ToString());
             if (IsLoggedIn == true)
             {
                 SwitchToHomeView();
             }
             else
             {
-
+                //MessageBox.Show("Dane sie nie zgadzaja!");
             }
         }
 
-        public static void ProccessData(bool isLoggedIn)
+        private void DataMatchReceivedHandler(bool dataMatch)
         {
-            MessageBox.Show(isLoggedIn.ToString());
+            IsLoggedIn = dataMatch;
         }
 
         private void SwitchToHomeView()

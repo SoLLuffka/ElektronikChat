@@ -60,7 +60,7 @@ namespace ElektronikServer
                         }
                     }
                 }
-                using (var cmd = new SQLiteCommand($"SELECT COUNT(*) FROM Users WHERE trim(login) = trim(@Login)", conn))
+                using (var cmd = new SQLiteCommand($"SELECT COUNT(*) FROM Users WHERE trim(login) = trim(@Login) AND trim(password) = trim(@Password)", conn))
                 {
                     cmd.Parameters.AddWithValue("@Login", login);
                     cmd.Parameters.AddWithValue("@Password", password);

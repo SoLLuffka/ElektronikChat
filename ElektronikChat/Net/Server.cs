@@ -27,7 +27,7 @@ namespace ElektronikChat.Core.Net
         public event Action userDisconnectedEvent;
         public event Action userRegistered;
         public event Action userLogged;
-        public event Action userDataMatch;
+        public event Action<bool> DataMatchReceived;
 
         //public delegate void DataMatchHandler(bool dataMatch);
         //public event DataMatchHandler DataMatch;
@@ -75,15 +75,15 @@ namespace ElektronikChat.Core.Net
         public void ReadPackets()
         {
             PacketReader = new PacketReader(_client.GetStream());
-            Task.Run(async () =>
+            Task.Run( () =>
             {
                 try
                 {
                     while (true)
                     {
-                        MessageBox.Show("sss");
-                        var opcode = await PacketReader.ReadByteAsync();
-                        MessageBox.Show($"Odebrano pakiet z opcodem: {opcode}");
+                        //MessageBox.Show("sss");
+                        var opcode = PacketReader.ReadByte();
+                        //MessageBox.Show($"Odebrano pakiet z opcodem: {opcode}");
                         switch (opcode)
                         {
                             case 1:
@@ -103,7 +103,8 @@ namespace ElektronikChat.Core.Net
                                 break;
                             case 30:
                                 var dataMatch = PacketReader.ReadBoolean();
-                                HandleDataMatch(dataMatch);
+                                //HandleDataMatch(dataMatch);
+                                OnDataMatchReceived(dataMatch);
                                 break;
                             default:
                                 MessageBox.Show("ah yes..");
@@ -124,6 +125,11 @@ namespace ElektronikChat.Core.Net
             {
                 MessageBox.Show($"Zgodność danych: {dataMatch}");
             });
+        }
+
+        protected virtual void OnDataMatchReceived(bool dataMatch)
+        {
+            DataMatchReceived?.Invoke(dataMatch);
         }
 
         public void SignalReadyToServer()
