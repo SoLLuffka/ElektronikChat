@@ -28,10 +28,22 @@ namespace ElektronikChat
             InitializeComponent();
             dbConnection = new DBConnection();
             dbConnection.InitializeDatabase();
+            ConnectToServer();
+        }
 
-            _server = Server.Instance;
-            _server.ConnectToServer("XD");
-            _server.SignalReadyToServer();
+        private void ConnectToServer()
+        {
+            try
+            {
+                _server = Server.Instance;
+                _server.ConnectToServer("XD");
+                _server.SignalReadyToServer();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nie udało się połączyć z serwerem");
+                //Application.Current.Shutdown();
+            }
         }
 
         

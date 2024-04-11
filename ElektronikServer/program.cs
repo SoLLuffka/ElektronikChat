@@ -31,6 +31,12 @@ namespace ElektronikServer
             while (true)
             {
                 var client = new Client(_listener.AcceptTcpClient());
+
+                var uidPacket = new PacketBuilder();  //przeslanie uid w celu utworzenia sesji
+                uidPacket.WriteOpCode(2);
+                uidPacket.WriteMessage(client.UID.ToString());
+                client.ClientScoket.Client.Send(uidPacket.GetPacketBytes());
+
                 _users.Add(client);
 
                 /*Broadcast the connection to everyone on server*/

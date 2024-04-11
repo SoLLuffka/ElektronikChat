@@ -25,6 +25,7 @@ namespace ElektronikServer
             var opcode = _packetReader.ReadByte();
             var placeholder = _packetReader.ReadMessage();
 
+
             Console.WriteLine($"[{DateTime.Now}]:{UID} has connected");
 
             Task.Run(() => Process());

@@ -22,6 +22,8 @@ namespace ElektronikChat.Core.Net
 
         public TcpClient Client => _client;
 
+        public string uid;
+
         public event Action connectedEvent;
         public event Action msgReceivedEvent;
         public event Action userDisconnectedEvent;
@@ -88,6 +90,9 @@ namespace ElektronikChat.Core.Net
                         {
                             case 1:
                                 connectedEvent?.Invoke();
+                                break;
+                            case 2:
+                                uid = PacketReader.ReadMessage();
                                 break;
                             case 5:
                                 msgReceivedEvent?.Invoke();

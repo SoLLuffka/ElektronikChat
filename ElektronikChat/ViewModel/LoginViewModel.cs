@@ -39,6 +39,8 @@ namespace ElektronikChat.ViewModel
             //MessageBox.Show(IsLoggedIn.ToString());
             if (IsLoggedIn == true)
             {
+                SessionManager.CreateSession(_server.uid, Login);
+
                 SwitchToHomeView();
             }
             else
