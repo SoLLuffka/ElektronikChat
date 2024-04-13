@@ -1,0 +1,65 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="TextBox" x:Key="SearchBox">
+        
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Margin" Value="8"/>
+        <Setter Property="Foreground" Value="Gray"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border Background="#3e4147">
+                        <!--styl searchbox'a-->
+                        <Grid>
+                            <TextBox
+                                VerticalAlignment="Stretch"
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Stretch"
+                                Background="#2f3237"
+                                TextWrapping="Wrap"
+                                BorderThickness="1,1,0,1"
+                                BorderBrush="Gray"
+                                Foreground="White"
+                                CaretBrush="Gray"
+                                Padding="8,0,0,0"
+                                x:Name="SearchUserBox"
+                                Text="">
+                                <TextBox.InputBindings>
+                                    <KeyBinding Command="{Binding SendCommand}" Key="Return"/>
+                                </TextBox.InputBindings>
+                            </TextBox>
+
+                            <!--znikajacy watermark-->
+                            <TextBlock IsHitTestVisible="False"
+                                   Text="Wyszukaj Użytkownika"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Margin="10,0,0,0"
+                                   Foreground="Gray">
+
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchUserBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+
+                                    </Style>
+                                </TextBlock.Style>
+
+                            </TextBlock>
+
+                        </Grid>
+
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+</ResourceDictionary>

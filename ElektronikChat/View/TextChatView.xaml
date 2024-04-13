@@ -54,17 +54,19 @@
                 <Border CornerRadius="25"
                         Width="30" Height="30"
                         Background="ForestGreen"
-                        Margin="16,0,0,0"/>
+                        Margin="16,0,0,0">
+                    <Label Content=""/>
+                </Border>
 
                 <StackPanel VerticalAlignment="Center">
                     <Label Content="Username"
                            Foreground="White"
                            FontWeight="SemiBold"
                            Margin="0,-4,0,-4"/>
-                    <Label Content="Status"
+                    <!--<Label Content="Status"
                            Foreground="Gray"
                            FontWeight="SemiBold"
-                           Margin="0,-8,0,-4"/>
+                           Margin="0,-8,0,-4"/>-->
                 </StackPanel>
 
             </StackPanel>
@@ -82,13 +84,37 @@
                 Background="#383c42">
                 <Grid HorizontalAlignment="Stretch"
                       Margin="8">
-
-                    <Label Content="@Username"
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.3*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label Grid.Column="0"
+                           Content="@Username"
                            Foreground="White"
                            FontSize="20"
                            FontWeight="Bold"
                            Margin="5,0,5,0"
                            VerticalAlignment="Center"/>
+
+                    <!--wyszukiwanie nowego uzytkownika-->
+                    <TextBox Grid.Column="1"
+                             Text=""
+                             Style="{StaticResource SearchBox}"
+                             Margin="0,6,0,6"/>
+                    
+                    
+                    <Button Grid.Column="2"
+                            Content="Szukaj"
+                            FontWeight="SemiBold"
+                            Background="#2f3237"
+                            Foreground="White"
+                            BorderThickness="1"
+                            Width="80"
+                            HorizontalAlignment="Left"
+                            Margin="0,6,0,6"
+                            x:Name="SearchUserButton"/>
 
                 </Grid>
             </Border>
@@ -113,7 +139,7 @@
 
                 <TextBox
                          Height="50"
-                         Text="Message @Username"
+                         Text="Message @Username;"
                          Style="{StaticResource MessageBox}"
                          Grid.ColumnSpan="2" Margin="16,10,0,10"/>
                 <!--Theme/MessageBox.xaml-->

@@ -14,6 +14,8 @@
                 <ResourceDictionary Source="Theme/ChatItems.xaml"></ResourceDictionary><!--styl do wyswietlanych wiadomosci-->
                 <ResourceDictionary Source="Theme/MessageBox.xaml"></ResourceDictionary><!--styl boxa na wiadomosc-->
                 <ResourceDictionary Source="Theme/NewFlashBox.xaml"></ResourceDictionary><!--styl boxa na informacje w CreateFlashCardView-->
+                <ResourceDictionary Source="Theme/SearchUserBox.xaml"></ResourceDictionary><!--stylko boxa do wyszukiwania uzytkownikow-->
+                <ResourceDictionary Source="Theme/StylishScroolbar.xaml"></ResourceDictionary>
                 <!--<ResourceDictionary Source="Theme/FlashCardDemo.xaml"></ResourceDictionary>wyglad fiszki w panelu tworzenia zestawu-->
             </ResourceDictionary.MergedDictionaries>
 
