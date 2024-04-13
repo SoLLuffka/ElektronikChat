@@ -29,13 +29,13 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="26"/> <!--custom headbar (soon)-->
+                <RowDefinition Height="26"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             
             <!--headbar-->
             <Border Grid.Row="0" Grid.Column="0"
-                  Background="Gray"
+                  Background="Black"
                   Grid.ColumnSpan="2"
                   MouseDown="Border_MouseDown">
 
@@ -44,13 +44,6 @@
                            Foreground="White"
                            FontSize="11"
                            FontWeight="SemiBold"/>
-                    
-                    <!--PLACEHOLDER-->
-                    <Button Content="placeholder znikanie menu"
-                            Foreground="Black"
-                            FontSize="13"
-                            Width="160"
-                            Click="MenuDissapear"/>
 
                     <StackPanel HorizontalAlignment="Right"
                                 Orientation="Horizontal">
@@ -60,6 +53,7 @@
                             FontSize="11"
                             FontWeight="SemiBold"
                             Background="Transparent"
+                            Foreground="White"
                             BorderThickness="0"
                             Margin="0,0,0,2"
                             Click="Minimize_Click"/>
@@ -69,6 +63,7 @@
                             FontSize="11"
                             FontWeight="SemiBold"
                             Background="Transparent"
+                            Foreground="White"
                             BorderThickness="0"
                             Click="Scale_Click"/>
                         <!--exit button-->
@@ -77,6 +72,7 @@
                             FontSize="11"
                             FontWeight="SemiBold"
                             Background="Transparent"
+                            Foreground="White"
                             BorderThickness="0"
                             Click="Exit_Click"/>
 
@@ -88,17 +84,17 @@
 
             <!--lista widokow-->
             <Grid Grid.Row="1" Grid.Column="0"
-                  Background="#414a4c"
+                  Background="#3b444b"
                   Visibility="Visible">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
                 </Grid.RowDefinitions> <!--e sigan sprawa jest-->
                 <!--<Grid.Triggers>-->
                 <!--<Trigger Property="twoje property" Value="twoje value">-->
@@ -107,6 +103,7 @@
                 <!--</Grid.Triggers>--> 
                 <!--dodatkowo zmienic szerokosc kolumny 0 na wartosc 0-->
                 <!--jak tworzysz nowy widok to: zrob ViewModel, podlacz do app.xaml, zrob usercontrol i kolejna komende w MainViewModel-->
+                
                 <RadioButton Content="Home"
                     Grid.Row="0"
                     FontSize="20"
@@ -120,17 +117,17 @@
                     Style="{StaticResource HomeButtonTheme}"
                     Command="{Binding TextChatViewCommand}"/>
 
-                <RadioButton Content="Fiszki"
+                <!--<RadioButton Content="Fiszki"
                     Grid.Row="2"
                     FontSize="20"
                     Style="{StaticResource HomeButtonTheme}"
-                    Command="{Binding FlashCardsViewCommand}"/>
+                    Command="{Binding FlashCardsViewCommand}"/>-->
 
-                <RadioButton Content="Szkoła"
+                <!--<RadioButton Content="Szkoła"
                     Grid.Row="3"
                     FontSize="20"
                     Style="{StaticResource HomeButtonTheme}"
-                    Command="{Binding SchoolViewCommand}"/>
+                    Command="{Binding SchoolViewCommand}"/>-->
 
                 <RadioButton Content="Autorzy"
                     Grid.Row="6"
@@ -145,6 +142,25 @@
                     Command="{Binding LoginViewCommand}"/>
        
             </Grid>
+            
+            <!--otwieranie/zamykanie menu-->
+
+            <Button Grid.Row="1" Grid.Column="0"
+                    Width="24"
+                    Height="24"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Content="≡"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Background="Transparent"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Margin="0,-4,0,0"
+                    Panel.ZIndex="10"
+                    x:Name="MenuButton"
+                    Click="MenuDissapear"/>
+
             <!--wybrany widok-->
             <ContentControl Grid.Row="1"
                             Grid.Column="1"

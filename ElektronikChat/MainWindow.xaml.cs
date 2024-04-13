@@ -100,16 +100,20 @@ namespace ElektronikChat
         {
             ColumnDefinition columnDefinition = NavBar;
 
+
             if (check_width == false)
-            {
-                
+            { 
+                //MenuButton - ten przyciski co z trzema liniami do chowania i pojawiania menu
                 columnDefinition.Width = new GridLength(0);
+                Grid.SetColumn(MenuButton, 1);
+                MenuButton.HorizontalAlignment = HorizontalAlignment.Left;
                 check_width = true;
             }
             else
-            {
-                
+            {    
                 columnDefinition.Width = new GridLength(120);
+                Grid.SetColumn(MenuButton, 0);
+                MenuButton.HorizontalAlignment = HorizontalAlignment.Right;
                 check_width = false;
             }
         }

@@ -128,6 +128,7 @@
                             Width="20" Height="20"
                             Margin="5,5,5,0"
                             Background="LightGray"
+                            FontWeight="Bold"
                             BorderThickness="0">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -141,6 +142,7 @@
                             Foreground="Gray"
                             Margin="5,5,5,0"
                             Background="LightGray"
+                            FontWeight="Bold"
                             BorderThickness="0">
                         <Button.Resources>
                             <Style TargetType="Border">

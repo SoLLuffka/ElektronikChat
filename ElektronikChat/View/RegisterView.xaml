@@ -12,7 +12,7 @@
     </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -28,7 +28,7 @@
                         FontWeight="Bold"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
-                        Margin="0,20,0,0"/>
+                        Margin="0,30,0,0"/>
         </StackPanel>
 
         
