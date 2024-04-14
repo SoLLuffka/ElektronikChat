@@ -114,6 +114,8 @@
                     FontWeight="SemiBold"
                     Background="#3a3b41"
                     Foreground="White"
+                    Cursor="Hand"
+                    Style="{StaticResource ButtonHover}"
                     Command="{Binding LoginCommand}"/>
             </Grid>
 
@@ -141,8 +143,10 @@
                     Content="Rejestracja"
                     Background="#3a3b41"
                     Foreground="White"
+                    Cursor="Hand"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Right"
+                    Style="{StaticResource ButtonHover}"
                     Command="{Binding RegisterViewCommand}"/>
             </Grid>
 

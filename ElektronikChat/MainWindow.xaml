@@ -157,6 +157,7 @@
                     Foreground="White"
                     BorderThickness="0"
                     Margin="0,-4,0,0"
+                    Style="{StaticResource ButtonHover}"
                     Panel.ZIndex="10"
                     x:Name="MenuButton"
                     Click="MenuDissapear"/>

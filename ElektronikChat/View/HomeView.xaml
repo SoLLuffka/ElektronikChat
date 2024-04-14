@@ -6,7 +6,7 @@
              xmlns:viewModel="clr-namespace:ElektronikChat.ViewModel"
              xmlns:local="clr-namespace:ElektronikChat.View"
              mc:Ignorable="d" 
-             d:DesignHeight="720" d:DesignWidth="1080">
+             d:DesignHeight="720" d:DesignWidth="960">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -35,28 +35,139 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="300"/>
-                    <RowDefinition Height="200"/>
                     <RowDefinition Height="150"/>
+                    <RowDefinition Height="400"/>
+                    <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0" Grid.Column="0">
-                    <Border Margin="20" 
+                <Grid Grid.Row="0" Grid.Column="0"
+                      Grid.ColumnSpan="2"
+                      Margin="50,0,50,0">
+                    <Border Margin="0,20,0,30" 
                             CornerRadius="20" 
-                            Background="Black">
-                        <TextBlock Text="elo żelo"
+                            Background="#3a3b41">
+                        <TextBlock Text="Witaj w Elektronik Chat! 😀"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
                                    Foreground="White"
-                                   FontSize="50"/>
+                                   FontSize="46"
+                                   FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
                     </Border>
                 </Grid>
 
-                <Grid Grid.Row="2" Grid.Column="1">
-                    <Border Margin="20" 
-                            CornerRadius="20" 
-                            Background="Black">
-                        <TextBlock Text="ta rakieta"
+                <Grid Grid.Row="1" Grid.Column="0"
+                      Margin="50,0,25,0">
+                    <Border Margin="0,20,0,30" 
+                        CornerRadius="20" 
+                        Background="#6b6e7b">
+                        <Grid Grid.Row="1" Margin="0,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.15*"/>
+                                <RowDefinition Height="0.21*"/>
+                                <RowDefinition Height="0.21*"/>
+                                <RowDefinition Height="0.21*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Border Background="#3a3b41" CornerRadius="20,20,0,0">
+                                <TextBlock Text="Aplikacja Wykonana przez:"
+                                    Grid.Row="0"
+                                    Foreground="White"
+                                    FontSize="25"
+                                    FontWeight="Bold"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    TextWrapping="Wrap"/>
+                                </Border>   
+                            </Grid>
+                            
+                            <!--sigan-->
+                            <Grid Grid.Row="1" >
+                                <TextBlock Text="Kamil Tereszkiewicz" 
+                                    Grid.Row="0"
+                                    Foreground="White"
+                                    FontSize="30"
+                                    FontWeight="Bold"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    TextWrapping="Wrap"/>
+                            </Grid>
+                            <!--hyxer-->
+                            <Grid Grid.Row="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Kamil Ruszała"
+                                   Grid.Row="0"
                                    Foreground="White"
-                                   FontSize="50"/>
+                                   FontSize="30"
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"/>
+                            </Grid>
+                            <!--frikil-->
+                            <Grid Grid.Row="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Miłosz Jakubowski"
+                                   Grid.Row="0"
+                                   Foreground="White"
+                                   FontSize="30"
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"/>
+                            </Grid>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="1"
+                    Margin="25,0,50,0">
+                    <Border Margin="0,20,0,30" 
+                        CornerRadius="20" 
+                        Background="#6b6e7b">
+                        <Grid Grid.Row="1" Margin="0,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.15*"/>
+                                <RowDefinition Height="0.63*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Border Background="#3a3b41" CornerRadius="20,20,0,0">
+                                    <TextBlock Text="Rozpocznij Czatowanie!"
+                                        Grid.Row="0"
+                                        Foreground="White"
+                                        FontSize="25"
+                                        FontWeight="Bold"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        TextWrapping="Wrap"/>
+                                </Border>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Button
+                                    Content="Przejdź do Czatu"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    FontSize="35"
+                                    FontWeight="SemiBold"
+                                    Background="Transparent"
+                                    Width="405" Height="300"
+                                    Cursor="Hand"
+                                    Style="{StaticResource ButtonHover}"
+                                    Click="HomeView_Click"/>
+                            </Grid>
+
+                        </Grid>
                     </Border>
                 </Grid>
 
