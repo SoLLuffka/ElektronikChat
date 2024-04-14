@@ -112,7 +112,7 @@ namespace ElektronikChat.Core.Net
                                 OnDataMatchReceived(dataMatch);
                                 break;
                             default:
-                                MessageBox.Show("ah yes..");
+                                //MessageBox.Show("ah yes..");
                                 break;
                         }
                     }
@@ -172,6 +172,14 @@ namespace ElektronikChat.Core.Net
             var messagePacket = new PacketBuilder();
             messagePacket.WriteOpCode(25);
             messagePacket.WriteMessage(message);
+            _client.Client.Send(messagePacket.GetPacketBytes());
+        }
+
+        public void SendUsername(string username)
+        {
+            var messagePacket = new PacketBuilder();
+            messagePacket.WriteOpCode(26);
+            messagePacket.WriteMessage(username);
             _client.Client.Send(messagePacket.GetPacketBytes());
         }
     }

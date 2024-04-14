@@ -5,35 +5,116 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace ElektronikChat.ViewModel
 {
-    class TextChatVIewModel
+    class TextChatVIewModel : ObservableObject
     {
         public ObservableCollection<UserModel> Users { get; set; }
-        public ObservableCollection<string> Messages { get; set; }
+        public ObservableCollection<string> _Messages { get; set; }
+        public ObservableCollection<MessageModel> Messages { get; set; }
+        public ObservableCollection<ContactModel> Contacts { get; set; }
 
+        private ContactModel _selectedContact;
+
+        public ContactModel SelectedContact
+        {
+            get { return _selectedContact; }
+            set { 
+                _selectedContact = value; 
+                OnPropertyChanged();
+            }
+        }
+
+            
+        private string _message;
+
+        public string Message 
+        { 
+            get { return _message; }
+            set { 
+                _message = value;
+                OnPropertyChanged(); 
+            } 
+        }
+
+        public RelayCommand SendCommand { get; set; }
+            
         public RelayCommand ConnectToServerCommand { get; set; }
         public RelayCommand SendMessageCommand { get; set; }
 
-        public string Username { get; set; }
-        public string Message { get; set; }
+        public static string Username { get; set; }
+        //public string Message { get; set; }
 
         private Server _server;
         public TextChatVIewModel()
         {
             Users = new ObservableCollection<UserModel>();
-            Messages = new ObservableCollection<string>();  
+            _Messages = new ObservableCollection<string>();  
+            Messages = new ObservableCollection<MessageModel>();
+            Contacts = new ObservableCollection<ContactModel>();
+
+
+            
+
+            Messages.Add(new MessageModel
+            {
+                Username = "Sigma",
+                Message = "Uuu, sigma",
+                Time = DateTime.Now,
+            });
+
+            for (int i = 0;i <3; i++)
+            {
+                Messages.Add(new MessageModel
+                {
+                    Username = "Sigma",
+                    Message = $"Uuu, sigma{i+1}",
+                    Time = DateTime.Now,
+                });
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                Messages.Add(new MessageModel
+                {
+                    Username = "Cwigkla",
+                    Message = $"Uuu, sigma{i + 1}",
+                    Time = DateTime.Now,
+                });
+            }
+
+            for(int i = 0;i <5;i++)
+            {
+                Contacts.Add(new ContactModel
+                {
+                    Name = $"Sigma {i+1}",
+                    Usernames = new List<string> { "Sigma", "Cwigkla"},
+                    Messages = Messages
+                });
+            }
 
             _server = Server.Instance;
             _server.connectedEvent += UserConnected;
             _server.msgReceivedEvent += MessageReceived;
             _server.userDisconnectedEvent += RemoveUser;
 
-            ConnectToServerCommand = new RelayCommand(o => _server.ConnectToServer(Username), o => !string.IsNullOrEmpty(Username));
+            SendCommand = new RelayCommand(o =>
+            {
+                SelectedContact.Messages.Add(new MessageModel
+                {
+                    Message = Message,
+                    Username = Username,
+                    Time = DateTime.Now
+                });
+                Message = "";
+
+            });
+            //ConnectToServerCommand = new RelayCommand(o => _server.ConnectToServer(Username), o => !string.IsNullOrEmpty(Username));
             SendMessageCommand = new RelayCommand(o => _server.SendMessageToServer(Message), o => !string.IsNullOrEmpty(Message)); 
         }
 
@@ -47,14 +128,19 @@ namespace ElektronikChat.ViewModel
         private void MessageReceived()
         {
             var msg = _server.PacketReader.ReadMessage();
-            Application.Current.Dispatcher.Invoke(() => Messages.Add(msg));
+            Application.Current.Dispatcher.Invoke(() => Messages.Add(new MessageModel
+            {
+                Username = Username,
+                Message = msg,
+                Time = DateTime.Now
+            }));
         }
 
         private void UserConnected()
         {
             var user = new UserModel
             {
-                Username = _server.PacketReader.ReadMessage(),
+                Username = "", //_server.PacketReader.ReadMessage()
                 UID = _server.PacketReader.ReadMessage(),
             };
 
@@ -63,6 +149,10 @@ namespace ElektronikChat.ViewModel
                 Application.Current.Dispatcher.Invoke(() => Users.Add(user));
             }
 
+        }
+        public static void SetUsername(string username)
+        {
+            Username = username;
         }
     }
 }

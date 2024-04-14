@@ -34,7 +34,8 @@
                    FontWeight="Bold"
                    Margin="10,0,0,0"/>
 
-            <ListView ItemsSource="{Binding Users}"
+            <ListView ItemsSource="{Binding Contacts}"
+                      SelectedItem="{Binding SelectedContact}"
                       Background="Transparent"
                       BorderThickness="0"
                       Grid.Row="1"
@@ -42,7 +43,7 @@
                 <!--lokacja ../Theme/ContactCard.xaml-->
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Username}"/>
+                        <TextBlock Text="{Binding Name}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -59,7 +60,7 @@
                 </Border>
 
                 <StackPanel VerticalAlignment="Center">
-                    <Label Content="Username"
+                    <Label Content="{Binding Username}"
                            Foreground="White"
                            FontWeight="SemiBold"
                            Margin="0,-4,0,-4"/>
@@ -139,9 +140,13 @@
 
                 <TextBox
                          Height="50"
-                         Text="Message @Username;"
                          Style="{StaticResource MessageBox}"
-                         Grid.ColumnSpan="2" Margin="16,10,0,10"/>
+                         Grid.ColumnSpan="2" Margin="16,10,0,10"
+                         Text="{Binding Message, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <TextBox.InputBindings>
+                        <KeyBinding Command="{Binding SendCommand}" Key="Return"/>
+                    </TextBox.InputBindings>
+                </TextBox>
                 <!--Theme/MessageBox.xaml-->
 
                 <StackPanel Orientation="Horizontal"

@@ -27,9 +27,11 @@
                             </Border>
 
                             <StackPanel>
-                                <Label Content="{Binding Username}"/> <!--nazwa uzytkownika czatu-->
+                                <Label Content="{Binding Name}"
+                                       Foreground="White"/> <!--nazwa uzytkownika czatu-->
                                 <Label Content="{Binding LastMessage}"
-                                       FontSize="6"/> <!--ostatnia wyslana wiadomosc-->
+                                       FontSize="10"
+                                       Foreground="LightGray"/> <!--ostatnia wyslana wiadomosc-->
                             </StackPanel>
                             
                         </StackPanel>

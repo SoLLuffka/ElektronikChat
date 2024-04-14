@@ -40,7 +40,7 @@ namespace ElektronikServer
                 _users.Add(client);
 
                 /*Broadcast the connection to everyone on server*/
-
+                BroadcastConnection();
             }
         }
 
@@ -57,6 +57,11 @@ namespace ElektronikServer
                     user.ClientScoket.Client.Send(broadcastPacket.GetPacketBytes());
                 }
             }
+        }
+
+        public static void BroadcastMessageList(string message, List<string> users, int chanelId)
+        {
+
         }
 
         public static void BroadcastMessage(string message)
@@ -105,7 +110,7 @@ namespace ElektronikServer
             else
             {
                 Console.WriteLine($"Nie znaleziono klienta o UID: {uid}");
-            }
+            }         
         }
 
         /*

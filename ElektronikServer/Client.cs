@@ -10,7 +10,7 @@ namespace ElektronikServer
 {
     internal class Client
     {
-        //public string Username { get; set; }
+        public string Username { get; set; }
         public Guid UID { get; set; }
         public TcpClient ClientScoket { get; set; }
 
@@ -70,6 +70,11 @@ namespace ElektronikServer
                             var logParts = logData.Split(';');
                             var logSuccess = await DBManager.UserExistsAsync(logParts[0], logParts[1], UID.ToString());
                             Console.WriteLine("Server received logData!");
+                            break;
+                        case 26:
+                            var UsernameData = _packetReader.ReadMessage();
+                            Username = UsernameData;
+                            //Console.WriteLine($"New username of {UID} client is {Username}");
                             break;
                         default:
                             break;

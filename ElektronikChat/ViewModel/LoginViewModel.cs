@@ -41,6 +41,11 @@ namespace ElektronikChat.ViewModel
             {
                 SessionManager.CreateSession(_server.uid, Login);
 
+                TextChatVIewModel.SetUsername(Login);
+
+                // wysyła po zalogowaniu username do serwera, do przechowania. potrzebne to jest do prawidłowego działania czatu
+                _server.SendUsername(Login);
+
                 SwitchToHomeView();
             }
             else
