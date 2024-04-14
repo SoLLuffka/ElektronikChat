@@ -57,11 +57,8 @@
                     Foreground="White"
                     Content="Dodaj Nowy Zestaw"
                     HorizontalAlignment="Center"
-                    Command="{Binding CreateFlashCardViewCommand}"
-                    Click="FlashCreateButton_Click"
                     />
-                <!--dodawajcie mi wasze komendy na dole bedzie 
-                    mi milo dzk :)-->
+            <!--Click="FlashCreateButton_Click"-->
         </Grid>
         
     </Grid>

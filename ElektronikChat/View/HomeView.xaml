@@ -59,7 +59,7 @@
                 <Grid Grid.Row="1" Grid.Column="0"
                       Margin="50,0,25,0">
                     <Border Margin="0,20,0,30" 
-                        CornerRadius="20" 
+                        CornerRadius="25,25,20,20" 
                         Background="#6b6e7b">
                         <Grid Grid.Row="1" Margin="0,0,0,0">
                             <Grid.RowDefinitions>
@@ -70,7 +70,7 @@
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0">
-                                <Border Background="#3a3b41" CornerRadius="20,20,0,0">
+                                <Border Background="#3a3b41" CornerRadius="19,19,0,0">
                                 <TextBlock Text="Aplikacja Wykonana przez:"
                                     Grid.Row="0"
                                     Foreground="White"
@@ -131,7 +131,7 @@
                 <Grid Grid.Row="1" Grid.Column="1"
                     Margin="25,0,50,0">
                     <Border Margin="0,20,0,30" 
-                        CornerRadius="20" 
+                        CornerRadius="25,25,20,20" 
                         Background="#6b6e7b">
                         <Grid Grid.Row="1" Margin="0,0,0,0">
                             <Grid.RowDefinitions>
@@ -140,7 +140,7 @@
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0">
-                                <Border Background="#3a3b41" CornerRadius="20,20,0,0">
+                                <Border Background="#3a3b41" CornerRadius="19,19,0,0">
                                     <TextBlock Text="Rozpocznij Czatowanie!"
                                         Grid.Row="0"
                                         Foreground="White"
