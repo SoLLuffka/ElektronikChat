@@ -1,6 +1,7 @@
 ﻿using ElektronikChat.Core;
 using ElektronikChat.Core.Net;
 using ElektronikChat.Model;
+using ElektronikChat.Net.IO;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -54,7 +55,7 @@ namespace ElektronikChat.ViewModel
         public TextChatVIewModel()
         {
             Users = new ObservableCollection<UserModel>();
-            _Messages = new ObservableCollection<string>();  
+            //_Messages = new ObservableCollection<string>();  
             Messages = new ObservableCollection<MessageModel>();
             Contacts = new ObservableCollection<ContactModel>();
 
@@ -65,7 +66,7 @@ namespace ElektronikChat.ViewModel
             {
                 Username = "Sigma",
                 Message = "Uuu, sigma",
-                Time = DateTime.Now,
+                Time = DateTime.Now.ToString(),
             });
 
             for (int i = 0;i <3; i++)
@@ -74,7 +75,7 @@ namespace ElektronikChat.ViewModel
                 {
                     Username = "Sigma",
                     Message = $"Uuu, sigma{i+1}",
-                    Time = DateTime.Now,
+                    Time = DateTime.Now.ToString(),
                 });
             }
 
@@ -84,7 +85,7 @@ namespace ElektronikChat.ViewModel
                 {
                     Username = "Cwigkla",
                     Message = $"Uuu, sigma{i + 1}",
-                    Time = DateTime.Now,
+                    Time = DateTime.Now.ToString(),
                 });
             }
 
@@ -94,7 +95,7 @@ namespace ElektronikChat.ViewModel
                 {
                     Name = $"Sigma {i+1}",
                     Usernames = new List<string> { "Sigma", "Cwigkla"},
-                    Messages = Messages
+                    Messages = new ObservableCollection<MessageModel>()
                 });
             }
 
@@ -102,20 +103,43 @@ namespace ElektronikChat.ViewModel
             _server.connectedEvent += UserConnected;
             _server.msgReceivedEvent += MessageReceived;
             _server.userDisconnectedEvent += RemoveUser;
+            _server.msgReceivedContactEvent += MessageReceivedContact;
 
-            SendCommand = new RelayCommand(o =>
-            {
-                SelectedContact.Messages.Add(new MessageModel
-                {
-                    Message = Message,
-                    Username = Username,
-                    Time = DateTime.Now
-                });
-                Message = "";
-
-            });
+            SendCommand = new RelayCommand(o => SendMessageToServer(), o => !string.IsNullOrEmpty(Message));
             //ConnectToServerCommand = new RelayCommand(o => _server.ConnectToServer(Username), o => !string.IsNullOrEmpty(Username));
             SendMessageCommand = new RelayCommand(o => _server.SendMessageToServer(Message), o => !string.IsNullOrEmpty(Message)); 
+        }
+
+        private void MessageReceivedContact()
+        {
+            try
+            {
+                var data = _server.PacketReader.ReadMessage();
+                data = data.Replace("\0", "");
+                var fragData = data.Split("←");
+                var name = fragData[0];
+                var message = fragData[1];
+                var username = fragData[2];
+                var datetime = fragData[3];
+                //var message = _server.PacketReader.ReadMessage();
+                //var username = _server.PacketReader.ReadMessage();
+                //var datetime = _server.PacketReader.ReadMessage();
+                var contact = Contacts.FirstOrDefault(c => c.Name == name);
+                if (contact != null)
+                {
+                    Application.Current.Dispatcher.Invoke(() =>
+                    contact.Messages.Add(new MessageModel
+                    {
+                        Username = username,
+                        Message = message,
+                        Time = datetime,
+                    }));
+                }
+            }
+            catch (Exception ex) 
+            {
+                //MessageBox.Show($"Błąd: {ex}");
+            }
         }
 
         private void RemoveUser()
@@ -132,7 +156,7 @@ namespace ElektronikChat.ViewModel
             {
                 Username = Username,
                 Message = msg,
-                Time = DateTime.Now
+                Time = DateTime.Now.ToString()
             }));
         }
 
@@ -153,6 +177,14 @@ namespace ElektronikChat.ViewModel
         public static void SetUsername(string username)
         {
             Username = username;
+        }
+
+        private void SendMessageToServer()
+        {
+            var name = SelectedContact.Name;
+            var message = Message;
+            Message = "";
+            _server.SendMessageToContact(name, message, Username);
         }
     }
 }

@@ -26,6 +26,7 @@ namespace ElektronikChat.Core.Net
 
         public event Action connectedEvent;
         public event Action msgReceivedEvent;
+        public event Action msgReceivedContactEvent;
         public event Action userDisconnectedEvent;
         public event Action userRegistered;
         public event Action userLogged;
@@ -96,6 +97,9 @@ namespace ElektronikChat.Core.Net
                                 break;
                             case 5:
                                 msgReceivedEvent?.Invoke();
+                                break;
+                            case 6:
+                                msgReceivedContactEvent?.Invoke();
                                 break;
                             case 10:
                                 userDisconnectedEvent?.Invoke();
@@ -179,6 +183,16 @@ namespace ElektronikChat.Core.Net
         {
             var messagePacket = new PacketBuilder();
             messagePacket.WriteOpCode(26);
+            messagePacket.WriteMessage(username);
+            _client.Client.Send(messagePacket.GetPacketBytes());
+        }
+
+        public void SendMessageToContact(string name, string message, string username)
+        {
+            var messagePacket = new PacketBuilder();
+            messagePacket.WriteOpCode(6);
+            messagePacket.WriteMessage(name);
+            messagePacket.WriteMessage(message);
             messagePacket.WriteMessage(username);
             _client.Client.Send(messagePacket.GetPacketBytes());
         }

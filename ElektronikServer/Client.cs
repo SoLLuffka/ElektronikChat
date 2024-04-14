@@ -55,6 +55,16 @@ namespace ElektronikServer
                             Console.WriteLine($"[{DateTime.Now}]: Message received {msg} from ");
                             program.BroadcastMessage($"[{DateTime.Now}]: []: {msg}");
                             break;
+                        case 6:
+                            var name = _packetReader.ReadMessage();
+                            var message = _packetReader.ReadMessage();
+                            var usrname = _packetReader.ReadMessage();
+                            Console.WriteLine($"name of group {name}, message {message}, from {usrname}");
+                            //program.BroadcastMessage($"[{DateTime.Now}]: []: {message}");
+                            program.BroadcastMessageContact(name, message, usrname, DateTime.Now.ToString());
+                            program.BroadcastMessageContact(name, message, usrname, DateTime.Now.ToString());
+                            program.BroadcastMessageContact(name, message, usrname, DateTime.Now.ToString());
+                            break;
                         case 20:
                             var regData = _packetReader.ReadMessage();
                             var parts = regData.Split(';');

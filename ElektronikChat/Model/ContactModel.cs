@@ -12,6 +12,20 @@ namespace ElektronikChat.Model
         public string Name { get; set; }
         public List<string> Usernames { get; set; }
         public ObservableCollection<MessageModel> Messages { get; set; }
-        public string LastMessage => Messages.Last().Message;
+        public string LastMessage => CheckHaveMessages();
+        public string id { get; private set; }
+        public ContactModel()
+        {
+            id = Guid.NewGuid().ToString();
+        }
+
+        private string CheckHaveMessages()
+        {
+            if (Messages.Count != 0)
+            {
+                return Messages.Last().Message;
+            }
+            return string.Empty;
+        }
     }
 }

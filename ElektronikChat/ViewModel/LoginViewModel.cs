@@ -34,7 +34,6 @@ namespace ElektronikChat.ViewModel
         private async Task LoginUserAsync()
         {
             _server.LoginUser($"{Login};{Password}");
-            _server.ReadPackets();
             _server.DataMatchReceived += DataMatchReceivedHandler;
             //MessageBox.Show(IsLoggedIn.ToString());
             if (IsLoggedIn == true)
