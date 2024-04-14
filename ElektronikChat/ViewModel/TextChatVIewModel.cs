@@ -60,17 +60,24 @@ namespace ElektronikChat.ViewModel
             Contacts = new ObservableCollection<ContactModel>();
 
 
-            
+
 
             Messages.Add(new MessageModel
             {
+<<<<<<< HEAD
                 Username = "Sigma",
                 Message = "Uuu, sigma",
                 Time = DateTime.Now.ToString(),
+=======
+                Username = "Katarzyna",
+                Message = "Hej",
+                Time = DateTime.Now,
+>>>>>>> 90bdd8206c11667fc60588dd1757034266be5197
             });
 
-            for (int i = 0;i <3; i++)
+            Messages.Add(new MessageModel
             {
+<<<<<<< HEAD
                 Messages.Add(new MessageModel
                 {
                     Username = "Sigma",
@@ -88,9 +95,17 @@ namespace ElektronikChat.ViewModel
                     Time = DateTime.Now.ToString(),
                 });
             }
+=======
+                Username = "Katarzyna",
+                Message = "Zrobiłeś zadanie domowe z Matematyki?",
+                Time = DateTime.Now,
+            });
 
-            for(int i = 0;i <5;i++)
+>>>>>>> 90bdd8206c11667fc60588dd1757034266be5197
+
+            Contacts.Add(new ContactModel
             {
+<<<<<<< HEAD
                 Contacts.Add(new ContactModel
                 {
                     Name = $"Sigma {i+1}",
@@ -98,6 +113,13 @@ namespace ElektronikChat.ViewModel
                     Messages = new ObservableCollection<MessageModel>()
                 });
             }
+=======
+                Name = "Katarzyna",
+                Usernames = new List<string> { "Sigma", "Cwigkla"},
+                Messages = Messages
+            });
+            
+>>>>>>> 90bdd8206c11667fc60588dd1757034266be5197
 
             _server = Server.Instance;
             _server.connectedEvent += UserConnected;

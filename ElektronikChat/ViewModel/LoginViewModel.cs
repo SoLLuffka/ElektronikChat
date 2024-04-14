@@ -1,5 +1,6 @@
 ﻿using ElektronikChat.Core;
 using ElektronikChat.Core.Net;
+using ElektronikChat.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,8 @@ namespace ElektronikChat.ViewModel
             {
                 await LoginUserAsync();
             });
+
+            MainViewModel viewModel;// Pobieranie kontekstu danych jako instancję MainViewModel
         }
 
         private async Task LoginUserAsync()

@@ -100,6 +100,7 @@
                            VerticalAlignment="Center"/>
 
                     <!--wyszukiwanie nowego uzytkownika-->
+                    
                     <TextBox Grid.Column="1"
                              Text=""
                              Style="{StaticResource SearchBox}"
@@ -111,10 +112,12 @@
                             FontWeight="SemiBold"
                             Background="#2f3237"
                             Foreground="White"
-                            BorderThickness="1"
+                            BorderThickness="1,0,0,0"
                             Width="80"
                             HorizontalAlignment="Left"
                             Margin="0,6,0,6"
+                            Cursor="Hand"
+                            Style="{StaticResource ButtonHover}"
                             x:Name="SearchUserButton"/>
 
                 </Grid>
@@ -155,31 +158,25 @@
                             Margin="0,0,16,0">
 
                     <Button Content="+"
-                            Foreground="Gray"
+                            Foreground="White"
                             Width="20" Height="20"
                             Margin="5,5,5,0"
-                            Background="LightGray"
+                            Background="#2f3237"
                             FontWeight="Bold"
-                            BorderThickness="0">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="25"/>
-                            </Style>
-                        </Button.Resources>
+                            Cursor="Hand"
+                            BorderThickness="0"
+                            Style="{StaticResource ButtonHover}">
                     </Button>
 
                     <Button Content=">"
                             Width="20" Height="20"
-                            Foreground="Gray"
+                            Foreground="White"
                             Margin="5,5,5,0"
-                            Background="LightGray"
+                            Background="#2f3237"
                             FontWeight="Bold"
-                            BorderThickness="0">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="25"/>
-                            </Style>
-                        </Button.Resources>
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Style="{StaticResource ButtonHover}">
                     </Button>
 
                 </StackPanel>

@@ -15,7 +15,8 @@
                 <ResourceDictionary Source="Theme/MessageBox.xaml"></ResourceDictionary><!--styl boxa na wiadomosc-->
                 <ResourceDictionary Source="Theme/NewFlashBox.xaml"></ResourceDictionary><!--styl boxa na informacje w CreateFlashCardView-->
                 <ResourceDictionary Source="Theme/SearchUserBox.xaml"></ResourceDictionary><!--stylko boxa do wyszukiwania uzytkownikow-->
-                <ResourceDictionary Source="Theme/StylishScroolbar.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Theme/StylishScroolbar.xaml"></ResourceDictionary><!--customowy wyglad scroolbar'a-->
+                <ResourceDictionary Source="Theme/ButtonHoverColor.xaml"></ResourceDictionary>
                 <!--<ResourceDictionary Source="Theme/FlashCardDemo.xaml"></ResourceDictionary>wyglad fiszki w panelu tworzenia zestawu-->
             </ResourceDictionary.MergedDictionaries>
 
@@ -45,20 +46,20 @@
                 <view:OptionsView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:FlashCardsViewModel}">
-                <!--widok fiszek-->
+            <!--<DataTemplate DataType="{x:Type viewModel:FlashCardsViewModel}">
+                --><!--widok fiszek--><!--
                 <view:FlashCardsView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:CreateFlashCardsViewModel}">
-                <!--tworzenie fiszek-->
+                --><!--tworzenie fiszek--><!--
                 <view:CreateFlashCardView/>
-            </DataTemplate>
+            </DataTemplate>-->
 
-            <DataTemplate DataType="{x:Type viewModel:SchoolViewModel}">
-                <!--widok szkolny-->
+            <!--<DataTemplate DataType="{x:Type viewModel:SchoolViewModel}">
+                --><!--widok szkolny--><!--
                 <view:SchoolView/>
-            </DataTemplate>
+            </DataTemplate>-->
 
             <DataTemplate DataType="{x:Type viewModel:DisconnectViewModel}">
                 <!--widok bledu polaczenia z serwerem-->

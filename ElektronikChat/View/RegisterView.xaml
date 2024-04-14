@@ -240,6 +240,8 @@
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
                         Margin="100,0,0,0"
+                        Cursor="Hand"
+                        Style="{StaticResource ButtonHover}"
                         Click="RegisterButton_Click"
                         Command="{Binding RegisterCommand}"/>
                 </Grid>

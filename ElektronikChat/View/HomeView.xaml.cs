@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElektronikChat.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,15 @@ namespace ElektronikChat.View
         public HomeView()
         {
             InitializeComponent();
+        }
+
+        private void HomeView_Click(object sender, RoutedEventArgs e)
+        {
+            var mainViewModel = Application.Current.MainWindow.DataContext as MainViewModel;
+            if (mainViewModel != null)
+            {
+                mainViewModel.CurrentView = mainViewModel.TextChatVM;
+            }
         }
     }
 }

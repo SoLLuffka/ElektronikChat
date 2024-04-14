@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using ElektronikChat.View;
+using ElektronikChat.ViewModel;
 using System.Windows.Controls;
 
 namespace ElektronikChat.ViewModel

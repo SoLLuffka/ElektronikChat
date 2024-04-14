@@ -23,12 +23,19 @@ namespace ElektronikChat
 
         private Server _server;
 
+        bool check_width = false;
+
         public MainWindow()
         {
             InitializeComponent();
             dbConnection = new DBConnection();
             dbConnection.InitializeDatabase();
             ConnectToServer();
+
+            MainViewModel viewModel = (MainViewModel)DataContext;// Pobieranie kontekstu danych jako instancję MainViewModel
+            viewModel.CurrentViewChanged += ViewModel_CurrentViewChanged;
+            DataContext = viewModel;
+            LoginSecure(viewModel); //pierwsze sprawdzenie widoku
         }
 
         private void ConnectToServer()
@@ -95,14 +102,13 @@ namespace ElektronikChat
             Application.Current.Shutdown();
         }
 
-        bool check_width = false;
         private void MenuDissapear(object sender, RoutedEventArgs e) //znikajace menu po lewej
         {
             ColumnDefinition columnDefinition = NavBar;
 
 
             if (check_width == false)
-            { 
+            {
                 //MenuButton - ten przyciski co z trzema liniami do chowania i pojawiania menu
                 columnDefinition.Width = new GridLength(0);
                 Grid.SetColumn(MenuButton, 1);
@@ -110,12 +116,47 @@ namespace ElektronikChat
                 check_width = true;
             }
             else
-            {    
+            {
                 columnDefinition.Width = new GridLength(120);
                 Grid.SetColumn(MenuButton, 0);
                 MenuButton.HorizontalAlignment = HorizontalAlignment.Right;
                 check_width = false;
             }
         }
+
+        private void ViewModel_CurrentViewChanged(object sender, EventArgs e)
+        {
+            // Wywołujemy metodę LoginSecure() przy każdej zmianie widoku
+            LoginSecure((MainViewModel)sender);
+        }
+
+        private void LoginSecure(MainViewModel viewModel) //zabezpieczenie przed zalogowaniem
+        {
+            if (viewModel.CurrentView is RegisterViewModel || viewModel.CurrentView is LoginViewModel)
+            {
+                HideNav();
+            }
+            else
+            {
+                ShowNav();
+            }
+        }
+
+        private void HideNav()
+        {
+            ColumnDefinition columnDefinition = NavBar;
+            columnDefinition.Width = new GridLength(0);
+            MenuButton.Visibility = Visibility.Collapsed;
+            check_width = true;
+        }
+
+        private void ShowNav()
+        {
+            ColumnDefinition columnDefinition = NavBar;
+            columnDefinition.Width = new GridLength(120);
+            MenuButton.Visibility = Visibility.Visible;
+            check_width = false;
+        }
+
     }
 }

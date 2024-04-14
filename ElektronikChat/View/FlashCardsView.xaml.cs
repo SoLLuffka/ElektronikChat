@@ -27,13 +27,13 @@ namespace ElektronikChat.View
             this.DataContext = new LoginViewModel();
         }
 
-        private void FlashCreateButton_Click(Object sender, RoutedEventArgs e) //zmiana widoku na panel rejestracji
-        {
-            var mainViewModel = Application.Current.MainWindow.DataContext as MainViewModel;
-            if (mainViewModel != null)
-            {
-                mainViewModel.CurrentView = mainViewModel.CreateFlashCardVM;
-            }
-        }
+        //private void FlashCreateButton_Click(Object sender, RoutedEventArgs e) //zmiana widoku na panel rejestracji
+        //{
+        //    var mainViewModel = Application.Current.MainWindow.DataContext as MainViewModel;
+        //    if (mainViewModel != null)
+        //    {
+        //        mainViewModel.CurrentView = mainViewModel.CreateFlashCardVM;
+        //    }
+        //}
     }
 }

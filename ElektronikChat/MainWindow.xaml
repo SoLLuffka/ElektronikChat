@@ -10,7 +10,7 @@
         Width="1080" Height="800"
         Title="Elektronik-Czat"
         Background="#353839"
-        ResizeMode="CanResizeWithGrip"
+        ResizeMode="CanResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"> <!--resizeMode do zmiany na none na koncu projektu-->
 
@@ -107,6 +107,7 @@
                 <RadioButton Content="Home"
                     Grid.Row="0"
                     FontSize="20"
+                    Cursor="Hand"
                     Style="{StaticResource HomeButtonTheme}"
                     IsChecked="True"
                     Command="{Binding HomeViewCommand}"/>
@@ -114,6 +115,7 @@
                 <RadioButton Content="Chat"
                     Grid.Row="1"
                     FontSize="20"
+                    Cursor="Hand"
                     Style="{StaticResource HomeButtonTheme}"
                     Command="{Binding TextChatViewCommand}"/>
 
@@ -129,15 +131,16 @@
                     Style="{StaticResource HomeButtonTheme}"
                     Command="{Binding SchoolViewCommand}"/>-->
 
-                <RadioButton Content="Autorzy"
+                <!--<RadioButton Content="Autorzy"
                     Grid.Row="6"
                     FontSize="20"
                     Style="{StaticResource HomeButtonTheme}"
-                    Command="{Binding OptionsViewCommand}"/>
+                    Command="{Binding OptionsViewCommand}"/>-->
 
-                <RadioButton Content="Login"
+                <RadioButton Content="Wyloguj Się"
                     Grid.Row="7"
                     FontSize="20"
+                    Cursor="Hand"
                     Style="{StaticResource HomeButtonTheme}"
                     Command="{Binding LoginViewCommand}"/>
        
@@ -157,6 +160,7 @@
                     Foreground="White"
                     BorderThickness="0"
                     Margin="0,-4,0,0"
+                    Style="{StaticResource ButtonHover}"
                     Panel.ZIndex="10"
                     x:Name="MenuButton"
                     Click="MenuDissapear"/>
