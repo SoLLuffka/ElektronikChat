@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElektronikChat", "ElektronikChat\ElektronikChat.csproj", "{F7763848-09C0-4A3D-B81A-87543226A1EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElektronikServer", "ElektronikServer\ElektronikServer.csproj", "{8391FAAD-DBD5-4EE4-A045-EBE510381EAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElektronikServer", "ElektronikServer\ElektronikServer.csproj", "{8391FAAD-DBD5-4EE4-A045-EBE510381EAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
