@@ -73,21 +73,12 @@ namespace ElektronikServer
 
         public static void BroadcastMessageContact(string name, string message, string username, string daytime)
         {
-            Console.WriteLine("Current users: ");
-            foreach(var user in _users)
-            {
-                Console.WriteLine($"{user.Username}");
-            }
             foreach(var user in _users)
             {
                 var msgPacket = new PacketBuilder();
                 msgPacket.WriteOpCode(6);
                 string msgString = $"{name}←{message}←{username}←{daytime}";
-                //msgPacket.WriteBoolean(true);
                 msgPacket.WriteMessage(msgString);
-                //msgPacket.WriteMessage(message);
-                //msgPacket.WriteMessage(username);
-                //msgPacket.WriteMessage(daytime);
                 user.ClientScoket.Client.Send(msgPacket.GetPacketBytes());
             }
         }

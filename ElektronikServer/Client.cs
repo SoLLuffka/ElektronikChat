@@ -60,8 +60,6 @@ namespace ElektronikServer
                             var message = _packetReader.ReadMessage();
                             var usrname = _packetReader.ReadMessage();
                             Console.WriteLine($"name of group {name}, message {message}, from {usrname}");
-                            //program.BroadcastMessage($"[{DateTime.Now}]: []: {message}");
-                            program.BroadcastMessageContact(name, message, usrname, DateTime.Now.ToString());
                             program.BroadcastMessageContact(name, message, usrname, DateTime.Now.ToString());
                             program.BroadcastMessageContact(name, message, usrname, DateTime.Now.ToString());
                             break;

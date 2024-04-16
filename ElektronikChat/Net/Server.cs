@@ -196,5 +196,12 @@ namespace ElektronikChat.Core.Net
             messagePacket.WriteMessage(username);
             _client.Client.Send(messagePacket.GetPacketBytes());
         }
+
+        public void WritePlainBool(bool value)
+        {
+            var packet = new PacketBuilder();
+            packet.WriteBoolean(value);
+            _client.Client.Send(packet.GetPacketBytes());
+        }
     }
 }

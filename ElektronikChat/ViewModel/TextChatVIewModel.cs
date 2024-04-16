@@ -93,7 +93,7 @@ namespace ElektronikChat.ViewModel
             {
                 Contacts.Add(new ContactModel
                 {
-                    Name = $"Sigma {i+1}",
+                    Name = $"Pokój {i+1}",
                     Usernames = new List<string> { "Sigma", "Cwigkla"},
                     Messages = new ObservableCollection<MessageModel>()
                 });
@@ -132,7 +132,7 @@ namespace ElektronikChat.ViewModel
                     {
                         Username = username,
                         Message = message,
-                        Time = datetime,
+                        Time = DateTime.Now.ToString(),
                     }));
                 }
             }
