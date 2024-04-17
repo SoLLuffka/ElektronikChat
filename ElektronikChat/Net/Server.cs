@@ -56,7 +56,7 @@ namespace ElektronikChat.Core.Net
         {
             if (!_client.Connected)
             {
-                _client.Connect("127.0.0.1", 22000);
+                _client.Connect("192.168.140.102", 22000);
 
 
                 var connectPacket = new PacketBuilder();
