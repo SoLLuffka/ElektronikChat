@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Threading.Tasks;
 using ElektronikServer.Net.IO;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ElektronikServer
 {
@@ -13,6 +15,20 @@ namespace ElektronikServer
     {
         private static string dbPath = "ElektronikChatDB.db";
         private static string connectionString = $"Data Source={dbPath};Version=3;";
+
+        public static string HashPassword(string password)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
 
         public static async Task<bool> RegisterUserAsync(string firstname, string lastname, string email, string login, string password)
         {
@@ -26,7 +42,7 @@ namespace ElektronikServer
                     cmd.Parameters.AddWithValue("@LastName", lastname);
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@Login", login);
-                    cmd.Parameters.AddWithValue("@Password", password); // Make sure to hash this
+                    cmd.Parameters.AddWithValue("@Password", HashPassword(password)); // Make sure to hash this
 
                     Console.WriteLine($"Rejestrowanie użytkownika. Login: {login}, Hasło: {password}, Imie: {firstname}, Nazwisko: {lastname}, Email: {email}");
                     int result = await cmd.ExecuteNonQueryAsync();
@@ -63,7 +79,7 @@ namespace ElektronikServer
                 using (var cmd = new SQLiteCommand($"SELECT COUNT(*) FROM Users WHERE trim(login) = trim(@Login) AND trim(password) = trim(@Password)", conn))
                 {
                     cmd.Parameters.AddWithValue("@Login", login);
-                    cmd.Parameters.AddWithValue("@Password", password);
+                    cmd.Parameters.AddWithValue("@Password", HashPassword(password));
                     var result = (long)await cmd.ExecuteScalarAsync();
                     if (result > 0)
                     {
