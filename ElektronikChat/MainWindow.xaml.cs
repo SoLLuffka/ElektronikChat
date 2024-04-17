@@ -25,6 +25,12 @@ namespace ElektronikChat
 
         bool check_width = false;
 
+        // Deklaruj publiczną właściwość, aby udostępnić dostęp do przycisku homeNav z innych miejsc w aplikacji
+        public RadioButton HomeNavButton
+        {
+            get { return homeNav; }
+        }
+
         public MainWindow()
         {
             InitializeComponent();

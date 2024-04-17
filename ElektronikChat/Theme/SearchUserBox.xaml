@@ -32,7 +32,7 @@
 
                             <!--znikajacy watermark-->
                             <TextBlock IsHitTestVisible="False"
-                                   Text="Wyszukaj Użytkownika"
+                                   Text="Dodaj Nowy Pokój"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
                                    Margin="10,0,0,0"

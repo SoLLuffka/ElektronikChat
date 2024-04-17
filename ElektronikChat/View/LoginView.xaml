@@ -134,7 +134,6 @@
                     HorizontalAlignment="Right"
                     TextWrapping="Wrap"/>
                 <Button Grid.Column="2"
-                    Click="RegButton_Click"
                     Width="80"
                     Height="36"
                     Margin="10,0,0,0"
@@ -147,6 +146,7 @@
                     VerticalAlignment="Top"
                     HorizontalAlignment="Right"
                     Style="{StaticResource ButtonHover}"
+                    Click="RegButton_Click"
                     Command="{Binding RegisterViewCommand}"/>
             </Grid>
 

@@ -44,5 +44,14 @@ namespace ElektronikChat.View
 
             Window parentWindow = Window.GetWindow(this);
         }
+
+        private void LogButton_Click(object sender, RoutedEventArgs e)
+        {
+            var mainViewModel = Application.Current.MainWindow.DataContext as MainViewModel;
+            if (mainViewModel != null)
+            {
+                mainViewModel.CurrentView = mainViewModel.LoginVM;
+            }
+        }
     }
 }

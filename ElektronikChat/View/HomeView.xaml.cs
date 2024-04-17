@@ -29,10 +29,12 @@ namespace ElektronikChat.View
         private void HomeView_Click(object sender, RoutedEventArgs e)
         {
             var mainViewModel = Application.Current.MainWindow.DataContext as MainViewModel;
+
             if (mainViewModel != null)
             {
                 mainViewModel.CurrentView = mainViewModel.TextChatVM;
             }
+            
         }
     }
 }

@@ -7,10 +7,10 @@
         xmlns:viewModel="clr-namespace:ElektronikChat.ViewModel"
         mc:Ignorable="d"
         MinWidth="840" MinHeight="660"
-        Width="1080" Height="800"
+        Width="840" Height="660"
         Title="Elektronik-Czat"
         Background="#353839"
-        ResizeMode="CanResize"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"> <!--resizeMode do zmiany na none na koncu projektu-->
 
@@ -105,6 +105,7 @@
                 <!--jak tworzysz nowy widok to: zrob ViewModel, podlacz do app.xaml, zrob usercontrol i kolejna komende w MainViewModel-->
                 
                 <RadioButton Content="Home"
+                    x:Name="homeNav"
                     Grid.Row="0"
                     FontSize="20"
                     Cursor="Hand"
@@ -113,6 +114,7 @@
                     Command="{Binding HomeViewCommand}"/>
 
                 <RadioButton Content="Chat"
+                    x:Name="chatNav"
                     Grid.Row="1"
                     FontSize="20"
                     Cursor="Hand"

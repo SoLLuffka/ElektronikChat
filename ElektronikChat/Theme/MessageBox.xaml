@@ -31,7 +31,7 @@
 
                             <!--znikajacy watermark-->
                             <TextBlock IsHitTestVisible="False"
-                                       Text="@Message"
+                                       Text="Napisz Wiadomość"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Left"
                                        Margin="10,0,0,0"

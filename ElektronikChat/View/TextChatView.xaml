@@ -54,7 +54,7 @@
 
                 <Border CornerRadius="25"
                         Width="30" Height="30"
-                        Background="ForestGreen"
+                        Background="LightGreen"
                         Margin="16,0,0,0">
                     <Label Content=""/>
                 </Border>
@@ -108,7 +108,7 @@
                     
                     
                     <Button Grid.Column="2"
-                            Content="Szukaj"
+                            Content="Dodaj"
                             FontWeight="SemiBold"
                             Background="#2f3237"
                             Foreground="White"
@@ -157,7 +157,7 @@
                             Grid.Column="1"
                             Margin="0,0,16,0">
 
-                    <Button Content="+"
+                    <!--<Button Content="+"
                             Foreground="White"
                             Width="20" Height="20"
                             Margin="5,5,5,0"
@@ -166,7 +166,7 @@
                             Cursor="Hand"
                             BorderThickness="0"
                             Style="{StaticResource ButtonHover}">
-                    </Button>
+                    </Button>-->
 
                     <Button Content=">"
                             Width="20" Height="20"
