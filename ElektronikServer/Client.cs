@@ -61,7 +61,6 @@ namespace ElektronikServer
                             var usrname = _packetReader.ReadMessage();
                             Console.WriteLine($"name of group {name}, message {message}, from {usrname}");
                             program.BroadcastMessageContact(name, message, usrname, DateTime.Now.ToString());
-                            program.BroadcastMessageContact(name, message, usrname, DateTime.Now.ToString());
                             break;
                         case 20:
                             var regData = _packetReader.ReadMessage();

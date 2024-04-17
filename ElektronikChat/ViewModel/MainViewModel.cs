@@ -84,6 +84,8 @@ namespace ElektronikChat.ViewModel
             LoginViewCommand = new RelayCommand(o =>
             {
                 CurrentView = LoginVM;
+                SessionManager.LeaveSession(_server.uid, LoginVM.Login);
+                TextChatVIewModel.SetUsername(String.Empty);
             });
             RegisterViewCommand = new RelayCommand(o =>
             {
@@ -116,7 +118,7 @@ namespace ElektronikChat.ViewModel
 
             // metody i zmienne czatu
 
-            _server = new Server();
+            _server = Server.Instance;
             //_server.ConnectToServer2();
 
         }

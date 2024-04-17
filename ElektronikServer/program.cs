@@ -21,7 +21,7 @@ namespace ElektronikServer
         static void Main(string[] args)
         {
             _users = new List<Client>();
-            _listener = new TcpListener(IPAddress.Parse("127.0.0.1"), 22000);
+            _listener = new TcpListener(IPAddress.Parse("192.168.140.102"), 22000);
             _listener.Start();
 
             //dbConnection = new DBConnection();
@@ -79,7 +79,10 @@ namespace ElektronikServer
                 msgPacket.WriteOpCode(6);
                 string msgString = $"{name}←{message}←{username}←{daytime}";
                 msgPacket.WriteMessage(msgString);
-                user.ClientScoket.Client.Send(msgPacket.GetPacketBytes());
+                for (var i = 0; i < 10; i++)
+                {
+                    user.ClientScoket.Client.Send(msgPacket.GetPacketBytes());
+                }
             }
         }
 

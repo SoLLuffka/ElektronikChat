@@ -22,5 +22,11 @@ namespace ElektronikChat.Core
 
             // MessageBox.Show($"Utworzono sesje z danymi {Uid}, {Username}, o czasie {SessionStart}");
         }
+
+        public static void LeaveSession(string uid, string username)
+        {
+            Uid = "";
+            Username = "";
+        }
     }
 }
